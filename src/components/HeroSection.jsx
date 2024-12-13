@@ -20,7 +20,7 @@ function HeroSection() {
     'We offer cutting-edge solutions that put air quality data at your fingertips.',
     'With our real-time insights, you can breathe easy and take control of your environment.',
     'We provide data that empowers you to make informed decisions for cleaner air and a healthier life.',
-    'Explore our website for more details!'
+    'Explore our website for more details! '
   ];
   
   const [loadingText, setLoadingText] = useState('');
