@@ -19,7 +19,7 @@ function HeroSection() {
     'Welcome to AirSphere!',
     'We offer cutting-edge solutions that put air quality data at your fingertips.',
     'With our real-time insights, you can breathe easy and take control of your environment.',
-    'We provide data that empowers you to make informed decisions for cleaner air and a healthier life.',
+    'We provide data that empowers you to make informed decisions for cleaner air and a healthier life. ',
     'Explore our website for more details! '
   ];
   
