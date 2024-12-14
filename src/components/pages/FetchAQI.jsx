@@ -17,7 +17,7 @@ const FetchAQI = () => {
 
     const fetchAQI = async () => {
         setLoading(true);  // Set loading to true when fetching data
-        const token = 'ef07f1b896e6842a1b1233c8ee916f84155ed377'; // Replace with your valid token
+        const token = import.meta.env.VITE_API_TOKEN;
         const url = `https://api.waqi.info/feed/${city}/?token=${token}`;
         
         try {
@@ -34,8 +34,8 @@ const FetchAQI = () => {
                 setTimezone(time.tz);
                 setIaqi(iaqi);
                 setError('');
-                setSource(attributions[0].name);  // Assuming attributions is an array
-                console.log(attributions[0].name);
+                setSource(attributions[0]?.name || 'Unknown');  // Safe handling of null/undefined
+                console.log(attributions[0]?.name);
             } else {
                 setError('Failed to fetch AQI data for this city.');
             }
@@ -69,7 +69,8 @@ const FetchAQI = () => {
             <div className="metric-card" key={metric.key}>
                 <strong>{metric.label}</strong>
                 <div className="value">
-                {iaqi[metric.key] ? (Math.round(iaqi[metric.key].v * 100) / 100).toFixed(2) : 'N/A'}
+                    {/* Ensure a valid value is rendered */}
+                    {iaqi[metric.key] ? (Math.round(iaqi[metric.key].v * 100) / 100).toFixed(2) : 'N/A'}
                 </div>
             </div>
         ));
@@ -112,8 +113,6 @@ const FetchAQI = () => {
                             <h2>Air Quality Metrics</h2>
                             <div className="metrics-list">{renderMetrics()}</div>
                         </div>
-
-
                     </div>
                 ) : (
                     <h1 className="loading">Awaiting the City Name!</h1>
