@@ -1,0 +1,44 @@
+/* Spinner.css */
+
+/* This container ensures the spinner is centered */
+.spinner-container {
+    display: flex;
+    justify-content: center;    /* Horizontally center */
+    align-items: center;        /* Vertically center */
+    height: 100vh;              /* Take full viewport height */
+    position: absolute;
+    width: 100%;
+  }
+  
+  /* Fancy loading text */
+  .loading-text {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #493628;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dot {
+    font-size: 40px;
+    animation: dot-blink 1.5s infinite steps(1);
+  }
+  
+  /* Animation for the dots */
+  @keyframes dot-blink {
+    0% {
+      content: '';
+    }
+    33% {
+      content: '.';
+    }
+    66% {
+      content: '..';
+    }
+    100% {
+      content: '...';
+    }
+  }
+  

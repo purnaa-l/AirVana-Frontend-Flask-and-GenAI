@@ -23,7 +23,7 @@ video {
     animation: fadeIn 2s ease-in-out forwards;
   }
   
-  .loading-text {
+  .loading-text-hero {
     margin-top: 20px;
     color: #fff;
     font-size: 32px;

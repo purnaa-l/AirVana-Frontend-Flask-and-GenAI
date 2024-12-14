@@ -39,7 +39,7 @@ function HeroSection() {
     <div className="hero-container">
       <video src="/videos/video-1.mp4" autoPlay loop muted />
       <h2 className="hero-heading">Air Quality, Simplified</h2>
-      <p className="loading-text">{loadingText}</p>
+      <p className="loading-text-hero">{loadingText}</p>
     </div>
   );
 }
