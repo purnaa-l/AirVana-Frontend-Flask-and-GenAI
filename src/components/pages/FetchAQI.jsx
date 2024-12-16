@@ -3,6 +3,15 @@ import axios from 'axios';
 import './FetchAQI.css';
 import Spinner from '../layouts/Spinner';
 
+const AQI_LEVELS = [
+    { range: [0, 50], label: 'Good', color: 'green', emoji: '😊' },
+    { range: [51, 100], label: 'Satisfactory', color: 'yellow', emoji: '🙂' },
+    { range: [101, 200], label: 'Moderate', color: 'orange', emoji: '😐' },
+    { range: [201, 300], label: 'Poor', color: 'red', emoji: '😷' },
+    { range: [301, 400], label: 'Very Poor', color: 'purple', emoji: '🤢' },
+    { range: [401, 500], label: 'Hazardous', color: 'maroon', emoji: '☠️' },
+];
+
 const FetchAQI = () => {
     const [aqi, setAqi] = useState(null);
     const [city, setCity] = useState('');
@@ -12,21 +21,18 @@ const FetchAQI = () => {
     const [timezone, setTimezone] = useState('');
     const [iaqi, setIaqi] = useState({});
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);  // Loading state to show spinner
+    const [loading, setLoading] = useState(false);
     const [source, setSource] = useState('');
 
     const fetchAQI = async () => {
-        setLoading(true);  // Set loading to true when fetching data
+        setLoading(true);
         const token = import.meta.env.VITE_API_TOKEN;
         const url = `https://api.waqi.info/feed/${city}/?token=${token}`;
-        
+
         try {
             const response = await axios.get(url);
-            console.log(response);
-            
             if (response.data.status === 'ok') {
-                const { aqi, city, time, iaqi, attributions } = response.data.data; 
-
+                const { aqi, city, time, iaqi, attributions } = response.data.data;
                 setAqi(aqi);
                 setStationName(city.name);
                 setGeo(city.geo);
@@ -34,8 +40,7 @@ const FetchAQI = () => {
                 setTimezone(time.tz);
                 setIaqi(iaqi);
                 setError('');
-                setSource(attributions[0]?.name || 'Unknown');  // Safe handling of null/undefined
-                console.log(attributions[0]?.name);
+                setSource(attributions[0]?.name || 'Unknown');
             } else {
                 setError('Failed to fetch AQI data for this city.');
             }
@@ -43,12 +48,17 @@ const FetchAQI = () => {
             console.error(err);
             setError('An error occurred. Please check your connection or city name.');
         } finally {
-            setLoading(false);  // Set loading to false once data is fetched or error occurs
+            setLoading(false);
         }
     };
 
     const handleCityChange = (event) => {
         setCity(event.target.value);
+    };
+
+    const getAQILevel = () => {
+        if (aqi === null) return { label: 'Unknown', color: 'grey', emoji: '❓' };
+        return AQI_LEVELS.find((level) => aqi >= level.range[0] && aqi <= level.range[1]) || AQI_LEVELS[AQI_LEVELS.length - 1];
     };
 
     const renderMetrics = () => {
@@ -69,11 +79,37 @@ const FetchAQI = () => {
             <div className="metric-card" key={metric.key}>
                 <strong>{metric.label}</strong>
                 <div className="value">
-                    {/* Ensure a valid value is rendered */}
-                    {iaqi[metric.key] ? (Math.round(iaqi[metric.key].v * 100) / 100).toFixed(2) : 'N/A'}
+                    {iaqi[metric.key] ? Math.abs((Math.round(iaqi[metric.key].v * 100) / 100).toFixed(2)) : 'N/A'}
                 </div>
             </div>
         ));
+    };
+
+    const renderAQICard = () => {
+        const { label, color, emoji } = getAQILevel();
+        return (
+            <div className="horizontal-card" style={{ borderColor: color }}>
+                <div className="card-content">
+                    <h2 style={{ color }}>{label} {emoji}</h2>
+                    <p>
+                        <strong>Station:</strong> {stationName || 'N/A'}
+                        <br />
+                        <strong>Coordinates:</strong> {geo.join(', ') || 'N/A'}
+                        <br />
+                        <strong>Measurement Time:</strong> {measurementTime || 'N/A'} ({timezone || 'N/A'})
+                    </p>
+                    <div className="horizontal-bar-container">
+                        <div className="horizontal-bar">
+                            <div
+                                className="aqi-marker"
+                                style={{ left: `${(aqi / 500) * 100}%`, backgroundColor: color }}
+                            ></div>
+                        </div>
+                    </div>
+                    <div className="live-button">LIVE</div>
+                </div>
+            </div>
+        );
     };
 
     return (
@@ -97,25 +133,15 @@ const FetchAQI = () => {
                 ) : error ? (
                     <h1 className="error">{error}</h1>
                 ) : aqi !== null ? (
-                    <div className="card-content">
-                        <h1 className="heading">Air Quality Index (AQI): {aqi}</h1>
-                        <p>
-                            <strong>Station:</strong> {stationName}
-                            <br />
-                            <strong>Fetched From:</strong> {source}
-                            <br />
-                            <strong>Coordinates:</strong> {geo.join(', ')}
-                            <br />
-                            <strong>Measurement Time:</strong> {measurementTime} ({timezone})
-                        </p>
-
+                    <>
+                        {renderAQICard()}
                         <div className="metrics-section">
                             <h2>Air Quality Metrics</h2>
                             <div className="metrics-list">{renderMetrics()}</div>
                         </div>
-                    </div>
+                    </>
                 ) : (
-                    <h1 className="loading">Awaiting the City Name!</h1>
+                    <h1 className="loading">Awaiting the City's Name!</h1>
                 )}
             </div>
         </div>
