@@ -169,3 +169,11 @@
       transition: 250ms;
     }
   }
+  .theme-toggle-button {
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .theme-toggle-button:hover {
+    color: #ffd700; /* A glowing yellow effect on hover */
+  }
+  

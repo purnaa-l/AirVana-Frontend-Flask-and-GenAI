@@ -7,33 +7,36 @@ import FetchAQI from './components/pages/FetchAQI';
 import Spinner from './components/layouts/Spinner';
 
 const App = () => {
-  const [loading, setLoading]=useState(true)
+  const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
   useEffect(() => {
-    // Replace this with any actual logic, like fetching data
     setTimeout(() => {
-      setLoading(false); // Once loading is complete, set loading to false
-    }, 1500); // Simulate a 2-second delay for loading
+      setLoading(false);
+    }, 1500);
   }, []);
-  if(loading)
-    return <Spinner />
-  else{
+
+  useEffect(() => {
+    // Apply theme to <html> tag
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  if (loading) return <Spinner />;
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Routes>
-        {/* Render HeroSection only for the root route */}
         <Route path="/" element={<HeroSection />} />
-        {/* Render AQIData only for the /view-past-aqis route */}
         <Route path="/view-past-aqis" element={<AQIData />} />
         <Route path="/fetch-aqi" element={<FetchAQI />} />
-        {/* <Route path="/map" element={<Map />} /> */}
-
-
       </Routes>
-     {/* <Footer/> */}
     </BrowserRouter>
   );
-}
 };
 
 export default App;
