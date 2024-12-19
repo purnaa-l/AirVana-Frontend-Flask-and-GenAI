@@ -91,6 +91,7 @@ const FetchAQI = () => {
             <div className="horizontal-card" style={{ borderColor: color }}>
                 <div className="card-content">
                     <h2 style={{ color }}>{label} {emoji}</h2>
+                    <h3>AQI: {aqi}</h3>
                     <p>
                         <strong>Station:</strong> {stationName || 'N/A'}
                         <br />
