@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './FetchAQI.css';
 import Spinner from '../layouts/Spinner';
+import { useNavigate } from 'react-router-dom';
+import { postAQIs } from '../../services/AqiService';
 
 const AQI_LEVELS = [
     { range: [0, 50], label: 'Good', color: 'green', emoji: '😊' },
@@ -24,15 +26,91 @@ const FetchAQI = () => {
     const [loading, setLoading] = useState(false);
     const [source, setSource] = useState('');
 
+    // const fetchAQI = async () => {
+    //     setLoading(true);
+    //     const token = import.meta.env.VITE_API_TOKEN;
+    //     const url = `https://api.waqi.info/feed/${city}/?token=${token}`;
+
+    //     try {
+    //         const response = await axios.get(url);
+    //         if (response.data.status === 'ok') {
+    //             console.log(response);
+    //             const { aqi, city, time, iaqi, attributions } = response.data.data;
+    //             setAqi(aqi);
+    //             setStationName(city.name);
+    //             setGeo(city.geo);
+    //             setMeasurementTime(time.s);
+    //             setTimezone(time.tz);
+    //             setIaqi(iaqi);
+    //             setError('');
+    //             setSource(attributions[0]?.name || 'Unknown');
+    //             postAQIs(response.data.data).then((response)=>{
+    //                 console.log(response.data);
+    //             })
+    //         } else {
+    //             setError('Failed to fetch AQI data for this city.');
+    //         }
+    //     } catch (err) {
+    //         console.error(err);
+    //         setError('An error occurred. Please check your connection or city name.');
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
     const fetchAQI = async () => {
         setLoading(true);
         const token = import.meta.env.VITE_API_TOKEN;
         const url = `https://api.waqi.info/feed/${city}/?token=${token}`;
-
+    
         try {
             const response = await axios.get(url);
             if (response.data.status === 'ok') {
                 const { aqi, city, time, iaqi, attributions } = response.data.data;
+    
+                // Determine AQI verdict
+                const getVerdict = (aqi) => {
+                    if (aqi <= 50) return 'Good';
+                    if (aqi <= 100) return 'Satisfactory';
+                    if (aqi <= 200) return 'Moderate';
+                    if (aqi <= 300) return 'Poor';
+                    if (aqi <= 400) return 'Very Poor';
+                    return 'Hazardous';
+                };
+    
+                // Get current date and time
+                const currentDate = new Date();
+                const formattedDate = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
+                const formattedTime = currentDate.toTimeString().split(' ')[0]; // HH:mm:ss
+    
+                // Construct payload
+                const aqiPayload = {
+                    city: city.name || '',
+                    station: city.name || 'Unknown',
+                    coordinates: city.geo ? city.geo.join(', ') : null,
+                    measuringTime: time.s || '',
+                    carbonMonoxide: iaqi.co?.v?.toString() || null,
+                    humidity: iaqi.h?.v?.toString() || null,
+                    nitrogenDioxide: iaqi.no2?.v?.toString() || null,
+                    ozone: iaqi.o3?.v?.toString() || null,
+                    pressure: iaqi.p?.v?.toString() || null,
+                    pm10: iaqi.pm10?.v?.toString() || null,
+                    pm2_5: iaqi.pm25?.v?.toString() || null,
+                    sulphurDioxide: iaqi.so2?.v?.toString() || null,
+                    temperature: iaqi.t?.v?.toString() || null,
+                    windSpeed: iaqi.w?.v?.toString() || null,
+                    AQI: aqi,
+                    verdict: getVerdict(aqi), // Dynamically assign verdict
+                    date: formattedDate,     // Current date
+                    time: formattedTime,     // Current time
+                };
+    
+                console.log('Posting payload:', aqiPayload);
+    
+                // Send payload to backend
+                const postResponse = await postAQIs(aqiPayload);
+                console.log('Data posted successfully:', postResponse.data);
+    
+                // Update state
                 setAqi(aqi);
                 setStationName(city.name);
                 setGeo(city.geo);
@@ -42,15 +120,61 @@ const FetchAQI = () => {
                 setError('');
                 setSource(attributions[0]?.name || 'Unknown');
             } else {
-                setError('Failed to fetch AQI data for this city.');
+                throw new Error('City data not available.');
             }
         } catch (err) {
             console.error(err);
-            setError('An error occurred. Please check your connection or city name.');
+    
+            // Handle cities that cannot be accessed by the API
+            const currentDate = new Date();
+            const formattedDate = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
+            const formattedTime = currentDate.toTimeString().split(' ')[0]; // HH:mm:ss
+    
+            const fallbackPayload = {
+                city: city,               // Use the user-provided city
+                station: null,            // Null for unaccessible cities
+                coordinates: null,
+                measuringTime: null,
+                carbonMonoxide: null,
+                humidity: null,
+                nitrogenDioxide: null,
+                ozone: null,
+                pressure: null,
+                pm10: null,
+                pm2_5: null,
+                sulphurDioxide: null,
+                temperature: null,
+                windSpeed: null,
+                AQI: null,
+                verdict: null,
+                date: formattedDate,      // Current date
+                time: formattedTime,      // Current time
+            };
+    
+            console.log('Posting fallback payload:', fallbackPayload);
+    
+            // Send fallback payload to backend
+            try {
+                const postResponse = await postAQIs(fallbackPayload);
+                console.log('Fallback data posted successfully:', postResponse.data);
+            } catch (postErr) {
+                console.error('Error posting fallback payload:', postErr);
+            }
+    
+            // Update error state
+            setError('City data not available.');
         } finally {
             setLoading(false);
         }
     };
+    
+    
+    
+
+    const navigator=useNavigate();
+    function viewAllAQIs(){
+        navigator('/viewAQIs');
+    }
 
     const handleCityChange = (event) => {
         setCity(event.target.value);
