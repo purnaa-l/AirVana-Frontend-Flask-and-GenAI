@@ -2,6 +2,7 @@ package com.postgresql.aqi.service.impl;
 
 import com.postgresql.aqi.dto.AqiDto;
 import com.postgresql.aqi.entity.Aqi;
+import com.postgresql.aqi.exception.ResourceNotFoundException;
 import com.postgresql.aqi.mapper.AqiMapper;
 import com.postgresql.aqi.repository.AqiRepository;
 import com.postgresql.aqi.service.AqiService;
@@ -44,5 +45,12 @@ public class AqiServiceImpl implements AqiService {
 // Perform save or update
 
         return AqiMapper.mapToAqiDto(savedAqi);
+    }
+
+    @Override
+    public AqiDto getAqi(Long aqiId) {
+        Aqi aqi=aqiRepository.findById(aqiId)
+                .orElseThrow(()-> new ResourceNotFoundException("AQI Data does not exist for the given ID."));
+        return AqiMapper.mapToAqiDto(aqi);
     }
 }

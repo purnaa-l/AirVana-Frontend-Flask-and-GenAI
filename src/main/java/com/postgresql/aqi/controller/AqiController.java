@@ -4,10 +4,7 @@ import com.postgresql.aqi.dto.AqiDto;
 import com.postgresql.aqi.service.AqiService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/aqi")
@@ -23,5 +20,13 @@ public class AqiController {
     public ResponseEntity<AqiDto> createAqi(@RequestBody AqiDto aqiDto) {
         AqiDto savedAqi = aqiService.createAqi(aqiDto);
         return new ResponseEntity<>(savedAqi, HttpStatus.CREATED);
+    }
+
+    //Build get AQI rest API
+
+    @GetMapping("{id}")
+    public ResponseEntity<AqiDto> getAqiById(@PathVariable("id") Long aqiId){
+        AqiDto aqiDto=aqiService.getAqi(aqiId);
+        return ResponseEntity.ok(aqiDto);
     }
 }
