@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ViewAQI.css'; // Link to the CSS file
 import Footer from '../Footer';
+import { Link } from 'react-router-dom';
 
 function ViewAQI() {
   const phrases = [
@@ -42,7 +43,7 @@ function ViewAQI() {
       <div className="text-overlay">
         <h2 className="hero-heading">Air Quality, Simplified</h2>
         <p className="scrolling-text">{scrollText}</p>
-        <button className="cta-button">Get Historical Data Now!</button>
+        <Link to="/historical-data" className="cta-button">Get Historical Data Now!</Link>
       </div>
     </div>
   );
