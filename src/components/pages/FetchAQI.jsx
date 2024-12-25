@@ -57,6 +57,116 @@ const FetchAQI = () => {
     //         setLoading(false);
     //     }
     // };
+    // const fetchAQI = async () => {
+    //     setLoading(true);
+    //     const token = import.meta.env.VITE_API_TOKEN;
+    //     const url = `https://api.waqi.info/feed/${city}/?token=${token}`;
+    
+    //     try {
+    //         const response = await axios.get(url);
+    //         if (response.data.status === 'ok') {
+    //             const { aqi, city, time, iaqi, attributions } = response.data.data;
+    
+    //             // Determine AQI verdict
+    //             const getVerdict = (aqi) => {
+    //                 if (aqi <= 50) return 'Good';
+    //                 if (aqi <= 100) return 'Satisfactory';
+    //                 if (aqi <= 200) return 'Moderate';
+    //                 if (aqi <= 300) return 'Poor';
+    //                 if (aqi <= 400) return 'Very Poor';
+    //                 return 'Hazardous';
+    //             };
+    
+    //             // Get current date and time
+    //             const currentDate = new Date();
+    //             const formattedDate = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
+    //             const formattedTime = currentDate.toTimeString().split(' ')[0]; // HH:mm:ss
+    
+    //             // Construct payload
+    //             const aqiPayload = {
+    //                 city: city.name || '',
+    //                 station: city.name || 'Unknown',
+    //                 coordinates: city.geo ? city.geo.join(', ') : null,
+    //                 measuringTime: time.s || '',
+    //                 carbonMonoxide: iaqi.co?.v?.toString() || null,
+    //                 humidity: iaqi.h?.v?.toString() || null,
+    //                 nitrogenDioxide: iaqi.no2?.v?.toString() || null,
+    //                 ozone: iaqi.o3?.v?.toString() || null,
+    //                 pressure: iaqi.p?.v?.toString() || null,
+    //                 pm10: iaqi.pm10?.v?.toString() || null,
+    //                 pm2_5: iaqi.pm25?.v?.toString() || null,
+    //                 sulphurDioxide: iaqi.so2?.v?.toString() || null,
+    //                 temperature: iaqi.t?.v?.toString() || null,
+    //                 windSpeed: iaqi.w?.v?.toString() || null,
+    //                 AQI: aqi,
+    //                 verdict: getVerdict(aqi), // Dynamically assign verdict
+    //                 date: formattedDate,     // Current date
+    //                 time: formattedTime,     // Current time
+    //             };
+    
+    //             console.log('Posting payload:', aqiPayload);
+    
+    //             // Send payload to backend
+    //             const postResponse = await postAQIs(aqiPayload);
+    //             console.log('Data posted successfully:', postResponse.data);
+    
+    //             // Update state
+    //             setAqi(aqi);
+    //             setStationName(city.name);
+    //             setGeo(city.geo);
+    //             setMeasurementTime(time.s);
+    //             setTimezone(time.tz);
+    //             setIaqi(iaqi);
+    //             setError('');
+    //             setSource(attributions[0]?.name || 'Unknown');
+    //         } else {
+    //             throw new Error('City data not available.');
+    //         }
+    //     } catch (err) {
+    //         console.error(err);
+    
+    //         // Handle cities that cannot be accessed by the API
+    //         const currentDate = new Date();
+    //         const formattedDate = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
+    //         const formattedTime = currentDate.toTimeString().split(' ')[0]; // HH:mm:ss
+    
+    //         const fallbackPayload = {
+    //             city: city,               // Use the user-provided city
+    //             station: null,            // Null for unaccessible cities
+    //             coordinates: null,
+    //             measuringTime: null,
+    //             carbonMonoxide: null,
+    //             humidity: null,
+    //             nitrogenDioxide: null,
+    //             ozone: null,
+    //             pressure: null,
+    //             pm10: null,
+    //             pm2_5: null,
+    //             sulphurDioxide: null,
+    //             temperature: null,
+    //             windSpeed: null,
+    //             AQI: null,
+    //             verdict: null,
+    //             date: formattedDate,      // Current date
+    //             time: formattedTime,      // Current time
+    //         };
+    
+    //         console.log('Posting fallback payload:', fallbackPayload);
+    
+    //         // Send fallback payload to backend
+    //         try {
+    //             const postResponse = await postAQIs(fallbackPayload);
+    //             console.log('Fallback data posted successfully:', postResponse.data);
+    //         } catch (postErr) {
+    //             console.error('Error posting fallback payload:', postErr);
+    //         }
+    
+    //         // Update error state
+    //         setError('City data not available.');
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
     const fetchAQI = async () => {
         setLoading(true);
         const token = import.meta.env.VITE_API_TOKEN;
@@ -65,7 +175,7 @@ const FetchAQI = () => {
         try {
             const response = await axios.get(url);
             if (response.data.status === 'ok') {
-                const { aqi, city, time, iaqi, attributions } = response.data.data;
+                const { aqi, city: apiCity, time, iaqi, attributions } = response.data.data;
     
                 // Determine AQI verdict
                 const getVerdict = (aqi) => {
@@ -82,91 +192,131 @@ const FetchAQI = () => {
                 const formattedDate = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
                 const formattedTime = currentDate.toTimeString().split(' ')[0]; // HH:mm:ss
     
+                // Ensure the city in the payload is a string (user-entered city name)
+                const cityName = typeof city === 'string' ? city : city.name || 'Unknown';
+                const stationName = response.data.data.city.name || 'N/A';
+    
                 // Construct payload
                 const aqiPayload = {
-                    city: city.name || '',
-                    station: city.name || 'Unknown',
-                    coordinates: city.geo ? city.geo.join(', ') : null,
-                    measuringTime: time.s || '',
-                    carbonMonoxide: iaqi.co?.v?.toString() || null,
-                    humidity: iaqi.h?.v?.toString() || null,
-                    nitrogenDioxide: iaqi.no2?.v?.toString() || null,
-                    ozone: iaqi.o3?.v?.toString() || null,
-                    pressure: iaqi.p?.v?.toString() || null,
-                    pm10: iaqi.pm10?.v?.toString() || null,
-                    pm2_5: iaqi.pm25?.v?.toString() || null,
-                    sulphurDioxide: iaqi.so2?.v?.toString() || null,
-                    temperature: iaqi.t?.v?.toString() || null,
-                    windSpeed: iaqi.w?.v?.toString() || null,
+                    city: cityName, // Ensure it's a string
+                    station: stationName, // Use station name if available, else 'N/A'
+                    coordinates: apiCity.geo ? apiCity.geo.join(', ') : 'N/A',
+                    measuringTime: time.s || 'N/A',
+                    carbonMonoxide: iaqi.co?.v ? Math.abs(Math.round(iaqi.co.v * 100) / 100).toString() : 'N/A',
+                    humidity: iaqi.h?.v ? Math.abs(Math.round(iaqi.h.v * 100) / 100).toString() : 'N/A',
+                    nitrogenDioxide: iaqi.no2?.v ? Math.abs(Math.round(iaqi.no2.v * 100) / 100).toString() : 'N/A',
+                    ozone: iaqi.o3?.v ? Math.abs(Math.round(iaqi.o3.v * 100) / 100).toString() : 'N/A',
+                    pressure: iaqi.p?.v ? Math.abs(Math.round(iaqi.p.v * 100) / 100).toString() : 'N/A',
+                    pm10: iaqi.pm10?.v ? Math.abs(Math.round(iaqi.pm10.v * 100) / 100).toString() : 'N/A',
+                    pm2_5: iaqi.pm25?.v ? Math.abs(Math.round(iaqi.pm25.v * 100) / 100).toString() : 'N/A',
+                    sulphurDioxide: iaqi.so2?.v ? Math.abs(Math.round(iaqi.so2.v * 100) / 100).toString() : 'N/A',
+                    temperature: iaqi.t?.v ? Math.abs(Math.round(iaqi.t.v * 100) / 100).toString() : 'N/A',
+                    windSpeed: iaqi.w?.v ? Math.abs(Math.round(iaqi.w.v * 100) / 100).toString() : 'N/A',
                     AQI: aqi,
-                    verdict: getVerdict(aqi), // Dynamically assign verdict
-                    date: formattedDate,     // Current date
-                    time: formattedTime,     // Current time
+                    verdict: getVerdict(aqi),
+                    date: formattedDate,
+                    time: formattedTime,
                 };
     
                 console.log('Posting payload:', aqiPayload);
     
                 // Send payload to backend
-                const postResponse = await postAQIs(aqiPayload);
-                console.log('Data posted successfully:', postResponse.data);
+                try {
+                    const postResponse = await postAQIs(aqiPayload);
+                    console.log('Data posted successfully:', postResponse.data);
     
-                // Update state
-                setAqi(aqi);
-                setStationName(city.name);
-                setGeo(city.geo);
-                setMeasurementTime(time.s);
-                setTimezone(time.tz);
-                setIaqi(iaqi);
-                setError('');
-                setSource(attributions[0]?.name || 'Unknown');
+                    // Update state
+                    setAqi(aqi);
+                    setStationName(stationName);
+                    setGeo(apiCity.geo);
+                    setMeasurementTime(time.s);
+                    setTimezone(time.tz);
+                    setIaqi(iaqi);
+                    setError('');
+                    setSource(attributions[0]?.name || 'Unknown');
+                } catch (postErr) {
+                    console.error('Error posting payload:', postErr.response ? postErr.response.data : postErr.message);
+    
+                    // If posting fails, attempt to post fallback payload
+                    const fallbackPayload = {
+                        city: cityName, // Always use the user-entered city here
+                        station: 'N/A', // Default to 'N/A' if no station data is available
+                        coordinates: 'N/A',
+                        measuringTime: 'N/A',
+                        carbonMonoxide: 'N/A',
+                        humidity: 'N/A',
+                        nitrogenDioxide: 'N/A',
+                        ozone: 'N/A',
+                        pressure: 'N/A',
+                        pm10: 'N/A',
+                        pm2_5: 'N/A',
+                        sulphurDioxide: 'N/A',
+                        temperature: 'N/A',
+                        windSpeed: 'N/A',
+                        AQI: 0, // Set AQI to 0
+                        verdict: 'N/A', // Set verdict to N/A
+                        date: formattedDate,
+                        time: formattedTime,
+                    };
+    
+                    console.log('Posting fallback payload:', fallbackPayload);
+    
+                    try {
+                        const fallbackPostResponse = await postAQIs(fallbackPayload);
+                        console.log('Fallback data posted successfully:', fallbackPostResponse.data);
+                    } catch (fallbackPostErr) {
+                        console.error('Error posting fallback payload:', fallbackPostErr.response ? fallbackPostErr.response.data : fallbackPostErr.message);
+                    }
+    
+                    setError('City data not available.');
+                }
             } else {
                 throw new Error('City data not available.');
             }
         } catch (err) {
-            console.error(err);
+            console.error('Error fetching AQI:', err.message);
     
-            // Handle cities that cannot be accessed by the API
+            // Attempt to post a fallback payload if initial API call fails
             const currentDate = new Date();
             const formattedDate = currentDate.toISOString().split('T')[0]; // YYYY-MM-DD
             const formattedTime = currentDate.toTimeString().split(' ')[0]; // HH:mm:ss
     
             const fallbackPayload = {
-                city: city,               // Use the user-provided city
-                station: null,            // Null for unaccessible cities
-                coordinates: null,
-                measuringTime: null,
-                carbonMonoxide: null,
-                humidity: null,
-                nitrogenDioxide: null,
-                ozone: null,
-                pressure: null,
-                pm10: null,
-                pm2_5: null,
-                sulphurDioxide: null,
-                temperature: null,
-                windSpeed: null,
-                AQI: null,
-                verdict: null,
-                date: formattedDate,      // Current date
-                time: formattedTime,      // Current time
+                city: city || 'Unknown', // Always use the user-entered city here
+                station: 'N/A', // Default to 'N/A' if no station data is available
+                coordinates: 'N/A',
+                measuringTime: 'N/A',
+                carbonMonoxide: 'N/A',
+                humidity: 'N/A',
+                nitrogenDioxide: 'N/A',
+                ozone: 'N/A',
+                pressure: 'N/A',
+                pm10: 'N/A',
+                pm2_5: 'N/A',
+                sulphurDioxide: 'N/A',
+                temperature: 'N/A',
+                windSpeed: 'N/A',
+                AQI: 0, // AQI set to 0
+                verdict: 'N/A',
+                date: formattedDate,
+                time: formattedTime,
             };
     
             console.log('Posting fallback payload:', fallbackPayload);
     
-            // Send fallback payload to backend
             try {
                 const postResponse = await postAQIs(fallbackPayload);
                 console.log('Fallback data posted successfully:', postResponse.data);
-            } catch (postErr) {
-                console.error('Error posting fallback payload:', postErr);
+            } catch (fallbackPostErr) {
+                console.error('Error posting fallback payload:', fallbackPostErr.response ? fallbackPostErr.response.data : fallbackPostErr.message);
             }
     
-            // Update error state
             setError('City data not available.');
         } finally {
             setLoading(false);
         }
     };
+    
     
     
     

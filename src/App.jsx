@@ -6,6 +6,9 @@ import AQIData from './components/AQIData';
 import FetchAQI from './components/pages/FetchAQI';
 import Spinner from './components/layouts/Spinner';
 import ViewUserAQI from './components/pages/ViewUserAQI';
+import ViewAQI from './components/pages/ViewAQI';
+import HistoricalAQI from './components/pages/HistoricalAQI';
+import CityCards from './components/CityCards';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -33,9 +36,11 @@ const App = () => {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Routes>
         <Route path="/" element={<HeroSection />} />
-        <Route path="/view-past-aqis" element={<AQIData />} />
+        <Route path="/view-past-aqis" element={<ViewAQI />} />
         <Route path="/fetch-aqi" element={<FetchAQI />} />
         <Route path="/view-user-aqis" element={<ViewUserAQI />} /> 
+        <Route path='/historical-data' element={<HistoricalAQI />} />
+        <Route path='/available-cities' element={<CityCards />} />
       </Routes>
     </BrowserRouter>
   );
