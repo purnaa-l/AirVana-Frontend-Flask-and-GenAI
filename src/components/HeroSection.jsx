@@ -1,16 +1,3 @@
-// import React from 'react'
-// import './HeroSection.css'
-// function HeroSection() {
-//   return (
-//     <div className='hero-container'>
-//         <video src='/videos/video-1.mp4' autoPlay loop muted />
-//         <h1>Air Quality, Simplified</h1> 
-      
-//     </div>
-//   )
-// }
-
-// export default HeroSection
 import React, { useState, useEffect } from 'react';
 import './HeroSection.css';
 
