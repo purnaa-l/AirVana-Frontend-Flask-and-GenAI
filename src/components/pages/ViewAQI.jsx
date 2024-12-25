@@ -42,7 +42,7 @@ function ViewAQI() {
       <div className="text-overlay">
         <h2 className="hero-heading">Air Quality, Simplified</h2>
         <p className="scrolling-text">{scrollText}</p>
-        <button className="cta-button">Get Past Suggestions</button>
+        <button className="cta-button">Get Historical Data Now!</button>
       </div>
     </div>
   );
