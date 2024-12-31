@@ -66,6 +66,8 @@ const ContactForm = () => {
     catch{
       console.log("Error submitting data");
       toast.error("Something went wrong. Try again.")
+      setFormData({ name: "", email: "", mobileNumber: "", query: "" });
+
     }
   }
     else {
