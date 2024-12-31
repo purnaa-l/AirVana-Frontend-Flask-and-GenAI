@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import './ContactForm.css'; // Assuming the updated CSS is in this file
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+import './ContactForm.css';
+import { postQuery } from "../services/AqiService";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -52,17 +54,33 @@ const ContactForm = () => {
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) =>  {
     e.preventDefault();
     if (validateForm()) {
-      // Handle form submission (e.g., send data to backend)
-      console.log("Form data submitted:", formData);
+      try{
+      const formResponse=await postQuery(formData);
+      console.log(formResponse);
+      toast.success("Form submitted successfully!"); // Success toast
       setFormData({ name: "", email: "", mobileNumber: "", query: "" });
+    } 
+    catch{
+      console.log("Error submitting data");
+      toast.error("Something went wrong. Try again.")
     }
-  };
+  }
+    else {
+
+      toast.error("Please correct the errors in the form."); // Error toast
+    }
+  }
+
+
+
+
 
   return (
     <div className="unique-contact-form-wrapper">
+      <div className="clouds"></div>
       <h2 className="unique-contact-form-title">Contact Us</h2>
       <form className="unique-contact-form-content" onSubmit={handleSubmit}>
         <div className="unique-form-group-container">
@@ -120,7 +138,9 @@ const ContactForm = () => {
           Submit
         </button>
       </form>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
+
   );
 };
 
