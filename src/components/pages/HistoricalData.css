@@ -1,0 +1,59 @@
+.historical-data-page {
+    background-color: #E9EED9;
+    padding: 20px;
+  }
+  
+  .historical-data-page h1 {
+    font-size: 2rem;
+    color: #493628;
+  }
+  
+  .filters {
+    margin: 20px 0;
+  }
+  
+  .filters label {
+    font-size: 1rem;
+  }
+  
+  .filters select {
+    padding: 10px;
+    margin-left: 10px;
+  }
+  
+  .city-actions {
+    margin-top: 20px;
+  }
+  
+  .action-button {
+    padding: 12px 25px;
+    background-color: #CBD2A4;
+    color: #493628;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .action-button:hover {
+    background-color: #B4C56A;
+  }
+  
+  .aqi-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  
+  .aqi-table th,
+  .aqi-table td {
+    padding: 10px;
+    border: 1px solid #CBD2A4;
+  }
+  
+  .aqi-table th {
+    background-color: #CBD2A4;
+    color: #493628;
+  }
+  
