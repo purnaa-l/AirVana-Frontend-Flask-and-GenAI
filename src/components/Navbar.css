@@ -24,6 +24,7 @@
     width: 100%; /* Ensure it stretches across the entire width */
     max-width: none; /* Disable the max-width constraint */
     padding: 0 20px; /* Optional: Add some padding on the sides */
+    position: fixed;
   }
   
   .navbar-logo {
