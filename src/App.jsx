@@ -11,6 +11,7 @@ import HistoricalAQI from './components/pages/HistoricalAQI';
 import CityCards from './components/CityCards';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+import HistoricalData from './components/pages/HistoricalData';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -40,9 +41,12 @@ const App = () => {
         <Route path="/view-past-aqis" element={<ViewAQI />} />
         <Route path="/fetch-aqi" element={<FetchAQI />} />
         <Route path="/view-user-aqis" element={<ViewUserAQI />} /> 
-        <Route path='/historical-data' element={<HistoricalAQI />} />
+        {/* <Route path='/historical-data' element={<HistoricalAQI />} /> */}
         <Route path='/available-cities' element={<CityCards />} />
         <Route path='/contact-form' element={<ContactForm />} />
+        {/* <Route path="/city/:cityName" element={<HistoricalDataPage />} /> */}
+        <Route path="/historical-data" element={<HistoricalData />} />
+
       </Routes>
     </BrowserRouter>
     
