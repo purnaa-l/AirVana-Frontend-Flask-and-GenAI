@@ -8,4 +8,4 @@ Real-time AQI Display: View live air quality data based on your location or a sp
 Historical Data: Access historical AQI records to analyze trends over time.
 Predictive Analytics: ML-powered predictions for future air quality trends, helping you plan ahead.
 Interactive Charts & Graphs: Visually explore AQI data over different time periods with easy-to-read graphs.
-Multiple City Support: Monitor air quality across multiple cities or regions.
+Multiple City Support: Monitor air quality across multiple cities or regions. 
