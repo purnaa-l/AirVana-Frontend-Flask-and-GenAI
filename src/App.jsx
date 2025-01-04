@@ -12,6 +12,8 @@ import CityCards from './components/CityCards';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import HistoricalData from './components/pages/HistoricalData';
+import AdminHero from './adminComponents/AdminHeroPage';
+import ViewEngagement from './adminComponents/ViewEngagement';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -46,7 +48,8 @@ const App = () => {
         <Route path='/contact-form' element={<ContactForm />} />
         {/* <Route path="/city/:cityName" element={<HistoricalDataPage />} /> */}
         <Route path="/historical-data" element={<HistoricalData />} />
-
+        <Route path='/admin' element={<AdminHero />} />
+        <Route path='/view-engagement' element={<ViewEngagement />} />
       </Routes>
     </BrowserRouter>
     
