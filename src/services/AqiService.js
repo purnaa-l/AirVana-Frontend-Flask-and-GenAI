@@ -7,6 +7,8 @@ const REST_API_ADD_CITY_URL="http://localhost:8080/api/aqi/admin/add-cities"
 export const listAQIs=()=>{
     return axios.get(REST_API_HISTORICAL_URL);
 }
+const REST_API_ENGAGEMENT_URL = "http://localhost:8080/api/engagement-data";
+
 
 export const postAQIs=(aqi)=>axios.post(REST_API_BASE_URL, aqi);
 export const postQuery=(query)=>axios.post(REST_API_CONTACT_URL, query);
@@ -94,3 +96,18 @@ export const getMinAqiByCity = async () => {
         console.error('Error fetching min AQI data', error);
     }
 };
+// api/service.js
+
+// export const fetchEngagementData = async (date) => {
+//     const formattedDate = date.toISOString().split("T")[0]; // Convert the selected date to YYYY-MM-DD
+  
+//     try {
+//         const response = await axios.get(`/api/view-engagement?date=${formattedDate}`);
+//         return response.data;
+//     } catch (error) {
+//         console.error("Error fetching engagement data:", error);
+//         throw error;  // Re-throw the error to handle it later in the component
+//     }
+// };
+
+  
