@@ -1,0 +1,206 @@
+/* General page styles */
+body {
+    background-color: #E9EED9;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #493628;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Input Section */
+.input-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.city-input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    border: 2px solid #CBD2A4;
+    border-radius: 5px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #CBD2A4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #B4C56A;
+}
+
+/* Card Styles */
+.card {
+    background-color: #CBD2A4;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 1000px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Content */
+.card-content {
+    text-align: center;
+}
+
+.heading {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Error and Loading */
+.error {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+.loading {
+    font-size: 20px;
+    color: #493628;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    align-items: center;
+    text-align: center;
+}
+
+/* Metrics Section */
+.metrics-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #E9EED9;
+    border-radius: 10px;
+}
+
+.metrics-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.metric-card {
+    background-color: #CBD2A4;
+    padding: 15px;
+    border-radius: 8px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.metric-card .value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Red and Green for messages */
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.horizontal-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #CBD2A4;
+    padding: 20px;
+    border: 3px solid;
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+}
+
+.live-button {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px red;
+    animation: glow 1.5s infinite;
+    position: absolute;
+    top: -15px; /* Adjust the positioning as needed */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.live-text {
+    color: red;
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 16px;
+    animation: shine 1.5s infinite;
+    white-space: nowrap;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px red;
+    }
+    50% {
+        box-shadow: 0 0 15px red;
+    }
+}
+
+@keyframes shine {
+    0% {
+        text-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red;
+    }
+    50% {
+        text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
+    }
+    100% {
+        text-shadow: 0 0 5px red, 0 0 10px red, 0 0 15px red;
+    }
+}
+
+.horizontal-bar-container {
+    margin: 10px 0;
+    width: 100%;
+    position: relative;
+}
+
+.horizontal-bar {
+    height: 10px;
+    background: linear-gradient(to right, green, yellow, orange, red, purple, maroon);
+    border-radius: 5px;
+    position: relative;
+}
+
+.aqi-marker {
+    width: 10px;
+    height: 20px;
+    position: absolute;
+    top: -5px;
+    border-radius: 5px;
+}
+
