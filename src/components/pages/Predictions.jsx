@@ -6,7 +6,7 @@ function Predictions() {
             "Tailored just for you—your personal air quality forecast!",
             "Scan the skies—track how your region breathes today. ",
             "Empowering governance with insights that matter. ",
-            "Breath-wise choices powered by AI. 🧠",
+            "Breath-wise choices powered by AI.",
             "Plan better days with smarter forecasts.",
           ];
           
