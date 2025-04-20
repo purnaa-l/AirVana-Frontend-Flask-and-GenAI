@@ -22,6 +22,7 @@ import Dashboard from './adminComponents/Dashboard';
 import ResolveQueries from './adminComponents/ResolveQueries';
 import UploadHistoricalData from './adminComponents/UploadHistoricalData';
 import APILogs from './adminComponents/APILogs';
+import Predictions from './components/pages/Predictions';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -66,6 +67,7 @@ const App = () => {
         <Route path='/resolve-queries' element={<ResolveQueries />} />
         <Route path='/upload-historical-data' element={<UploadHistoricalData />} />
         <Route path='/apilogs' element={<APILogs />} />
+        <Route path='/predictions' element={<Predictions />} />
       </Routes>
     </BrowserRouter>
     
