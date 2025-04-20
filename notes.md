@@ -1,0 +1,2 @@
+- Background image has been updated to a cloud image in FetchAQI.css file. To make it normal, remove the background image. 
+-Vite requires all env variables to start with VITE_. Anything else (like REACT_APP_) won’t be exposed to the frontend.

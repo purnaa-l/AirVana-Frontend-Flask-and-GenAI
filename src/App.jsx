@@ -23,6 +23,7 @@ import ResolveQueries from './adminComponents/ResolveQueries';
 import UploadHistoricalData from './adminComponents/UploadHistoricalData';
 import APILogs from './adminComponents/APILogs';
 import Predictions from './components/pages/Predictions';
+import PredictionForm from './MLComponents/PredictionForm';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -68,6 +69,7 @@ const App = () => {
         <Route path='/upload-historical-data' element={<UploadHistoricalData />} />
         <Route path='/apilogs' element={<APILogs />} />
         <Route path='/predictions' element={<Predictions />} />
+        <Route path='/temperature-versus-AQI' element={<PredictionForm />} />
       </Routes>
     </BrowserRouter>
     
