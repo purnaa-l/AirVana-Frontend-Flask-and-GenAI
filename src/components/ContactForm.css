@@ -2,7 +2,7 @@
 
 /* Main Wrapper */
 .unique-contact-form-wrapper {
-  background: linear-gradient(135deg, #182848, #000);
+  /* background: linear-gradient(135deg, #182848, #000); */
   position: relative;
   padding: 100px;
   color: black;
@@ -14,7 +14,7 @@
   object-fit: cover;
   .unique-contact-form-wrapper {
   margin: 0;
-  background: url('images/clouds.png') repeat-x; 
+  background: url(/public/images/airy.png) repeat-x; 
 
   box-sizing: border-box;
   background: rgba(0, 0, 0, 0.6); 
