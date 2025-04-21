@@ -11,5 +11,3 @@ Predictive Analytics: ML-powered predictions for future air quality trends, help
 Interactive Charts & Graphs: Visually explore AQI data over different time periods with easy-to-read graphs.
 Multiple City Support: Monitor air quality across multiple cities or regions. 
 =======
-# MiniProject
->>>>>>> 1121094e008213a34932f0b0d6b6371ca0888f76
