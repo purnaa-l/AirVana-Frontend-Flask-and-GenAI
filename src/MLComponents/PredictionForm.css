@@ -59,6 +59,17 @@
     min-height: 180px; /* 👈 keeps initial height consistent */
 
   }
+
+  .prediction-result {
+    background-color: #f1e5d1;
+    color: #333;
+    border-left: 6px solid #987070;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
   .info-section {
     width: 100%;
     max-width: 900px;
