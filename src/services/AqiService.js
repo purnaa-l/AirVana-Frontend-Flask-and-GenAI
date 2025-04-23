@@ -96,6 +96,22 @@ export const getMinAqiByCity = async () => {
         console.error('Error fetching min AQI data', error);
     }
 };
+
+export const insertAqiRecord = async (aqiData) => {
+    try {
+        const response = await axios.post("http://localhost:8080/api/temperature-versus-aqi", aqiData, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        console.log("✅ AQI Data Inserted:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("❌ Error inserting AQI data:", error.response?.data || error.message);
+        throw error;
+    }
+};
+
 // api/service.js
 
 // export const fetchEngagementData = async (date) => {
