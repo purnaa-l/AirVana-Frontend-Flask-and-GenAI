@@ -15,25 +15,41 @@ export const postQuery=(query)=>axios.post(REST_API_CONTACT_URL, query);
 export const postCity=(city)=>axios.post(REST_API_ADD_CITY_URL, city);
 const REST_API_CHATBOT_URL = "http://localhost:8080/api/aqi/chatbot/query";
 
-// Service function to send a query to the backend and receive a response
-export const postChatQuery = async (userMessage) => {
-    const maxLength = 1000; // Set an appropriate length limit
-    const truncatedMessage = userMessage.length > maxLength ? userMessage.substring(0, maxLength) : userMessage;
+// // Service function to send a query to the backend and receive a response
+// export const postChatQuery = async (userMessage) => {
+//     const maxLength = 1000; // Set an appropriate length limit
+//     const truncatedMessage = userMessage.length > maxLength ? userMessage.substring(0, maxLength) : userMessage;
 
-    console.log("Sending message to backend:", { message: truncatedMessage }); // Log the message
+//     console.log("Sending message to backend:", { message: truncatedMessage }); // Log the message
 
+//     try {
+//         const response = await axios.post(REST_API_CHATBOT_URL, { message: truncatedMessage }, {
+//             headers: { "Content-Type": "application/json" },
+//         });
+
+//         return response.data;
+//     } catch (error) {
+//         console.error("Error in sending chatbot query:", error);
+//         return "Sorry, something went wrong! Please try again later.";
+//     }
+// };
+
+export const postChatQuery = async (message) => {
     try {
-        const response = await axios.post(REST_API_CHATBOT_URL, { message: truncatedMessage }, {
-            headers: { "Content-Type": "application/json" },
-        });
-
-        return response.data;
+      const response = await fetch("http://127.0.0.1:5000", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: message }),
+      });
+  
+      const data = await response.json();
+      return data; // This should be plain text like "Hello, how can I help you?"
     } catch (error) {
-        console.error("Error in sending chatbot query:", error);
-        return "Sorry, something went wrong! Please try again later.";
+      console.error("Chatbot error:", error);
+      return "Sorry, something went wrong!";
     }
-};
-
+  };
+  
 export const getCities = async () => {
     try {
       const response = await axios.get(REST_API_GET_CITIES_URL);
