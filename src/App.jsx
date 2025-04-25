@@ -24,6 +24,7 @@ import UploadHistoricalData from './adminComponents/UploadHistoricalData';
 import APILogs from './adminComponents/APILogs';
 import Predictions from './components/pages/Predictions';
 import PredictionForm from './MLComponents/PredictionForm';
+import RegionalTrendsHeroSectionHeroSection from './MLComponents/RegionalTrendsHeroSection';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -70,6 +71,7 @@ const App = () => {
         <Route path='/apilogs' element={<APILogs />} />
         <Route path='/predictions' element={<Predictions />} />
         <Route path='/temperature-versus-AQI' element={<PredictionForm />} />
+        <Route path='/regional-trends-risk-forecast' element={<RegionalTrendsHeroSectionHeroSection />} />
       </Routes>
     </BrowserRouter>
     
