@@ -114,7 +114,10 @@ function Navbar({ theme, toggleTheme }) {
                 <Link to="/contact-form" className="nav-link" style={{ color: '#fff' }}>Contact Us</Link>
               </li>
               <li className='nav-item'>
-                <Link to="/predictions" className="nav-link" style={{ color: '#fff' }}>Predictions</Link>
+                <Link to="/predictions" className="nav-link" style={{ color: '#fff' }}>ML Predictions</Link>
+              </li>
+              <li className='nav-item'>
+                <Link to="/genai" className="nav-link" style={{ color: '#fff' }}>GenAI</Link>
               </li>
             </ul>
             {/* Theme Toggle Button */}
