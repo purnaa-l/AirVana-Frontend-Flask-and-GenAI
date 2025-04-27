@@ -61,8 +61,8 @@ page_bg_img = """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Title
-st.markdown("<h1 style='text-align: center; color: #F5F5F5;'>🌌 Gemini Voice & Text Chat Assistant 💬</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #D3D3D3;'>Speak or Type to chat naturally!</p>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #F5F5F5;'>🌬️ Meet Airi – Your Voice & Text AI Companion 💬</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #D3D3D3;'>Hi, I’m <strong>Airi</strong>, AirSphere's GenAI assistant for smarter, healthier breathing 🌿. </p>", unsafe_allow_html=True)
 st.divider()
 
 # Initialize chat history
@@ -74,6 +74,9 @@ csv_file = "chat_history.csv"
 if not os.path.exists(csv_file):
     pd.DataFrame(columns=["Role", "Content"]).to_csv(csv_file, index=False)
 
+def store_chat(role, content):
+    new_row = pd.DataFrame({"Role": [role], "Content": [content]})
+    new_row.to_csv(csv_file, mode='a', header=False, index=False)
 # Display Chat History
 def display_chat():
     for message in st.session_state.chat_history:
@@ -86,10 +89,14 @@ def display_chat():
 
 display_chat()
 
+if len(st.session_state.chat_history) == 0:
+     st.session_state.chat_history.append({"role": "model", "content": "Hi, I am Airi: AirSphere's GenAI-powered intelligent assistant, how can I help you today?"})
+     store_chat("Assistant", "Hi, I am Airi! I am AirSphere's GenAI-powered intelligent assistant, how can I help you today?")
 # Input Method
+
 col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns
 with col2:
-    input_type = st.radio("Input Type", ["Text", "Voice"], horizontal=True)
+    input_type = st.radio("How do you want to converse with me?", ["Text", "Voice"], horizontal=True)
 # Text input (only when Text selected)
 user_input_text = None
 if input_type == "Text":
@@ -114,7 +121,7 @@ elif input_type == "Voice":
 def send_message(user_input):
     if user_input:
         with st.empty():
-            st.markdown('<p class="typing">Gemini is typing...</p>', unsafe_allow_html=True)
+            st.markdown('<p class="typing">Airi is responding...</p>', unsafe_allow_html=True)
             time.sleep(1.5)  # Delay for realistic typing feel
         try:
             response = chat.send_message(user_input)
@@ -125,9 +132,7 @@ def send_message(user_input):
     return None
 
 # Store in CSV
-def store_chat(role, content):
-    new_row = pd.DataFrame({"Role": [role], "Content": [content]})
-    new_row.to_csv(csv_file, mode='a', header=False, index=False)
+
 
 # Main Logic
 if user_input_text:
@@ -152,4 +157,3 @@ chat_bubble_html = """
 </div>
 """
 st.markdown(chat_bubble_html, unsafe_allow_html=True)
-
