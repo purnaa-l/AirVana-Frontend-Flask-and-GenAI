@@ -13,7 +13,7 @@ st.set_page_config(page_title="PolluScan: Smart Pollution Analyzer", layout="cen
 # --- Custom CSS with Green Theme ---
 background_color = "#f5f7fa"  # Light background
 text_color = "#2c3e50"  # Dark text
-card_background = "#ffffff"  # Card background
+card_background = ""  # Card background
 button_color = "#4CAF50"  # Green button color
 
 # --- Custom CSS for UI/UX enhancements ---
@@ -62,6 +62,7 @@ st.markdown(f"""
         border-radius: 15px;
         box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
         margin-bottom: 20px;
+        text-color: black;
     }}
     .stImage > img {{
         border-radius: 15px;
@@ -76,6 +77,7 @@ st.markdown(f"""
 
 # --- Logo and Title ---
 st.title("🌱 PolluScan: Pollution Detection & Smart Recommendations")
+st.markdown("<p style='text-align: center; color: #D3D3D3;'>Click a picture of the air around you, and get the smartest AI insights NOW!</p>", unsafe_allow_html=True)
 st.markdown(f"""
 <div class="markdown-text-container">
     <h3>🔍 What PolluScan Offers:</h3>
