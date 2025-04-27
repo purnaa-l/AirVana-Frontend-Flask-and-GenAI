@@ -12,11 +12,29 @@ st.set_page_config(page_title="PolluScan: Smart Pollution Analyzer", layout="cen
 
 # --- Custom CSS with Green Theme ---
 background_color = "#f5f7fa"  # Light background
-text_color = "#2c3e50"  # Dark text
+text_color = "#ffffff"  # Dark text
 card_background = ""  # Card background
 button_color = "#4CAF50"  # Green button color
 
 # --- Custom CSS for UI/UX enhancements ---
+
+page_bg_img = """
+<style>
+/* Background */
+[data-testid="stAppViewContainer"] {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('https://images.unsplash.com/photo-1509515837298-2c67a3933321?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');}
+
+/* Transparent header and sidebar */
+[data-testid="stHeader"], [data-testid="stSidebar"] {
+    background: rgba(0,0,0,0);
+}
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 st.markdown(f"""
 <style>
     body {{
@@ -77,20 +95,20 @@ st.markdown(f"""
 
 # --- Logo and Title ---
 st.title("🌱 PolluScan: Pollution Detection & Smart Recommendations")
-st.markdown("<p style='text-align: center; color: #D3D3D3;'>Click a picture of the air around you, and get the smartest AI insights NOW!</p>", unsafe_allow_html=True)
-st.markdown(f"""
-<div class="markdown-text-container">
-    <h3>🔍 What PolluScan Offers:</h3>
-    <ul>
-        <li><b>Pollution Type Detection</b> from environment images (Air, Water, Land, Mixed)</li>
-        <li><b>Pollution Severity Analysis</b> (Low, Moderate, High, Hazardous)</li>
-        <li><b>Specific Observations</b> about the pollution</li>
-        <li><b>Personalized Actionable Recommendations</b> for Individuals & Communities</li>
-        <li><b>Multilingual Support</b> (Select your preferred language!)</li>
-    </ul>
-    <p>Ready to contribute to a cleaner planet? 🌍 Upload your photo now!</p>
-</div>
-""", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #000000;'>Click a picture of the air around you, and get the smartest AI insights NOW!</p>", unsafe_allow_html=True)
+#st.markdown(f"""
+# <div class="markdown-text-container">
+#     <h3>🔍 What PolluScan Offers:</h3>
+#     <ul>
+#         <li><b>Pollution Type Detection</b> from environment images (Air, Water, Land, Mixed)</li>
+#         <li><b>Pollution Severity Analysis</b> (Low, Moderate, High, Hazardous)</li>
+#         <li><b>Specific Observations</b> about the pollution</li>
+#         <li><b>Personalized Actionable Recommendations</b> for Individuals & Communities</li>
+#         <li><b>Multilingual Support</b> (Select your preferred language!)</li>
+#     </ul>
+#     <p>Ready to contribute to a cleaner planet? 🌍 Upload your photo now!</p>
+# </div>
+#""", unsafe_allow_html=True)
 
 # --- Language Selection ---
 lang = st.selectbox("🌐 Choose your language for the report:", ["Kannada", "English", "Hindi", "Tamil", "Telugu"])
