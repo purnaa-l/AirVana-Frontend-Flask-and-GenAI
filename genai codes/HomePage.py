@@ -129,7 +129,7 @@ with col1:
     if st.button("🌱 Smart Pollution Detector"):
         switch_page("polluscan")
     if st.button("💬 Health Impact Chatbot"):
-        switch_page("health_chatbot")
+        switch_page("healthifyAI")
     if st.button("📝 Daily Air Quality Forecast"):
         switch_page("daily_forecast")
     if st.button("🎙️ Interactive Voice AQI Assistant"):
