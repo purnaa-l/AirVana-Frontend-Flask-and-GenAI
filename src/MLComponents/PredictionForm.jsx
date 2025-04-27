@@ -409,7 +409,7 @@ const PredictionForm = () => {
           <h3>Explore</h3>
           <ul>
             <li><a href="#models">Accurate Predictive Models</a></li>
-            <li><a href="#weather">Weather vs AQI</a></li>
+            <li><a href="http://localhost:8501">Weather vs AQI</a></li>
             <li><a href="#temperature">Temperature vs AQI</a></li>
             <li><a href="#more">More Insights</a></li>
           </ul>
