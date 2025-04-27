@@ -345,7 +345,6 @@
 
 import React, { useState, useEffect } from "react";
 import { postChatQuery } from "../../services/AqiService"; // Import the service function
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const Chatbot = ({ closeChatbot }) => {
   const [messages, setMessages] = useState([
