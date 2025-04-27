@@ -1,0 +1,34 @@
+Date,Time,User Query,AQI,Health Conditions,Advice
+2025-04-27,21:45:01,I want to go for a jog,100,Mild Asthma,"Hello! I'm HealthifyAI, here to help you make informed decisions about your health.
+
+Current AQI of 100 means the air quality is moderate.  This may cause some discomfort for individuals with respiratory sensitivities like mild asthma. Prolonged exposure could worsen symptoms.
+
+
+Here are some personalized steps for you:
+
+1. **Shorten your jog:** Consider a shorter jog today, perhaps 20-30 minutes instead of your usual duration.  Listen to your body and stop if you feel any wheezing or shortness of breath.
+2. **Pre-jog medication:** Ensure you've taken your prescribed preventative asthma medication before heading out.
+3. **Monitor your symptoms:** Pay close attention to your breathing and heart rate during and after your jog.
+
+
+**Risk Level:** Moderate
+
+While the risk is moderate for you given your mild asthma and the current AQI, it's important to be cautious.  If you experience any significant worsening of your symptoms (e.g., severe wheezing, difficulty breathing, chest tightness), please contact your doctor or emergency services immediately.  Keep your inhaler readily accessible during your jog.
+
+
+Remember, it's always best to prioritize your health and well-being. Enjoy your jog, but be mindful of your body's signals."
+2025-04-27,21:47:26,I have to go for a jog,341,None,"Hello!  I understand you're planning a jog, but the current AQI of 341 is extremely high.
+
+**Impact Summary:** An AQI of 341 indicates hazardous air quality.  Prolonged exposure can severely impact respiratory and cardiovascular health, even in healthy individuals.  Breathing this air will likely cause significant irritation and discomfort.
+
+**Personalized Actionable Steps:**
+
+1. **Postpone your jog:**  Reschedule your run for a day when the AQI is significantly lower (ideally below 100).  Check air quality forecasts regularly.
+2. **Indoor exercise alternative:** Consider an indoor workout, such as a home workout video or a session at a well-ventilated gym.
+
+
+**Risk Level:** Severe
+
+**Emergency Contacts & Steps:** If you experience any shortness of breath, chest pain, wheezing, coughing, or dizziness during or after any outdoor activity today,  seek immediate medical attention.  Call your doctor or emergency services (dial 911 or your local emergency number) immediately.
+
+Please prioritize your health and safety.  It's much better to delay your jog until the air quality improves.  I hope you feel better soon!"
