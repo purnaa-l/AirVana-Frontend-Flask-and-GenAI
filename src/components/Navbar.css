@@ -1,15 +1,18 @@
 
 .navbar {
-    background: linear-gradient(90deg, rgb(95, 111, 82), 0%, rgb(95, 111, 82) 100%);
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, rgb(95, 111, 82), 0%, rgb(95, 111, 82) 100%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
   .playwrite-nl-guides-regular {
     font-family: "Playwrite NL Guides", cursive;
     font-weight: 400;

@@ -1,21 +1,19 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
-
-# --- Page Configuration ---
 st.set_page_config(
     page_title="AeroAI - AirSphere's GenAI Powered Assistant!",
     page_icon="🌌",
     layout="centered"
 )
 
-# --- Custom CSS for Eco/Nature Theme and Stylish UI/UX ---
 page_bg_img = """
 <style>
 /* Background */
 [data-testid="stAppViewContainer"] {
     background-size: cover;
     background-position: center;
-    background-image: url('https://images.unsplash.com/photo-1743878206228-5f36b5f5c830?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-image: url('https://cdn.pixabay.com/photo/2021/11/01/19/39/nature-6761493_1280.jpg');
+    # background-image: url('https://images.unsplash.com/photo-1743878206228-5f36b5f5c830?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-attachment: fixed;
 }
 
@@ -114,7 +112,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # --- Welcome Title ---
 st.markdown("<h1 class='fancy-title'>Welcome to AeroAI 🌳🌱</h1>", unsafe_allow_html=True)
-st.markdown("<h3 class='subheading'>Powered by AirSphere's Smart GenAI Assistant🌍</h3>", unsafe_allow_html=True)
+st.markdown("<h3 class='subheading'>AirSphere's Smart GenAI Assistant🌍</h3>", unsafe_allow_html=True)
 
 # --- Divider ---
 st.write("")
@@ -163,5 +161,3 @@ chat_bubble_html = """
 </div>
 """
 st.markdown(chat_bubble_html, unsafe_allow_html=True)
-
-# --- Chat Bubble Button (Bottom Right) ---
