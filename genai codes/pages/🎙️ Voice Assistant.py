@@ -6,19 +6,15 @@ import time
 import os
 from dotenv import load_dotenv
 
-# Configure Gemini API
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel(model_name="models/gemini-1.5-flash")
 chat = model.start_chat()
 
-# Set up speech recognizer
 recognizer = sr.Recognizer()
 
-# --- Streamlit Page Config ---
 st.set_page_config(page_title="🌌 Gemini Voice Chatbot", page_icon="💬", layout="wide")
 
-# Night Starry Sky Background (prettier one)
 page_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
@@ -65,11 +61,9 @@ st.markdown("<h1 style='text-align: center; color: #F5F5F5;'>🌬️ Meet Airi �
 st.markdown("<p style='text-align: center; color: #D3D3D3;'>Hi, I’m <strong>Airi</strong>, AirSphere's GenAI assistant for smarter, healthier breathing 🌿. </p>", unsafe_allow_html=True)
 st.divider()
 
-# Initialize chat history
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# Initialize CSV
 csv_file = "chat_history.csv"
 if not os.path.exists(csv_file):
     pd.DataFrame(columns=["Role", "Content"]).to_csv(csv_file, index=False)
@@ -92,12 +86,10 @@ display_chat()
 if len(st.session_state.chat_history) == 0:
      st.session_state.chat_history.append({"role": "model", "content": "Hi, I am Airi: AirSphere's GenAI-powered intelligent assistant, how can I help you today?"})
      store_chat("Assistant", "Hi, I am Airi! I am AirSphere's GenAI-powered intelligent assistant, how can I help you today?")
-# Input Method
 
-col1, col2, col3 = st.columns([1, 1, 1])  # Create three columns
+col1, col2, col3 = st.columns([1, 1, 1])  
 with col2:
     input_type = st.radio("How do you want to converse with me?", ["Text", "Voice"], horizontal=True)
-# Text input (only when Text selected)
 user_input_text = None
 if input_type == "Text":
     user_input_text = st.text_input("", placeholder="Click here to type your message...", label_visibility="collapsed", key="text_input")
@@ -117,7 +109,6 @@ elif input_type == "Voice":
             except TimeoutError:
                 st.error("Timeout. Speak quickly!")
 
-# Send message
 def send_message(user_input):
     if user_input:
         with st.empty():
@@ -131,10 +122,6 @@ def send_message(user_input):
             return None
     return None
 
-# Store in CSV
-
-
-# Main Logic
 if user_input_text:
     if user_input_text.lower() in ["exit", "quit", "bye"]:
         st.success("👋 Goodbye! See you soon.")
@@ -150,7 +137,6 @@ if user_input_text:
             time.sleep(1)
             st.rerun()
 
-# Floating Chat Bubble
 chat_bubble_html = """
 <div class="chat-bubble">
     💬

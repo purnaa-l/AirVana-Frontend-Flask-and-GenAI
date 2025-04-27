@@ -1,13 +1,9 @@
-# healthifyai_app.py
-
 import streamlit as st
 import google.generativeai as genai
 import os
 import pandas as pd
 from dotenv import load_dotenv
 from datetime import datetime
-
-# --- INIT ---
 load_dotenv()
 st.set_page_config(
     page_title="HealthifyAI - Breathe Better, Live Stronger",
@@ -15,12 +11,6 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="collapsed"
 )
-
-# --- SESSION STATE INIT ---
-if "extra_tips" not in st.session_state:
-    st.session_state.extra_tips = ""
-
-# --- BACKGROUND + STYLE ---
 pg_bg_img = """
 <style>
 [data-testid="stAppViewContainer"] {
@@ -34,7 +24,6 @@ pg_bg_img = """
 </style>
 """
 st.markdown(pg_bg_img, unsafe_allow_html=True)
-
 st.markdown("""
 <style>
 html, body, [class*="css"] {
@@ -88,11 +77,9 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 """, unsafe_allow_html=True)
 
-# --- CONFIGURE GOOGLE GENAI ---
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel(model_name="models/gemini-1.5-flash")
 
-# --- FUNCTIONS ---
 def get_health_advice(user_query, current_aqi, user_health_conditions=[]):
     prompt = f"""
     You are HealthifyAI, a highly professional health assistant specialized in air quality and health.
@@ -113,8 +100,6 @@ def get_health_advice(user_query, current_aqi, user_health_conditions=[]):
     response = model.generate_content(prompt)
     return response.text.strip()
 
-
-
 def save_to_csv(user_query, current_aqi, user_health_conditions, advice_text):
     now = datetime.now()
     data = {
@@ -132,11 +117,9 @@ def save_to_csv(user_query, current_aqi, user_health_conditions, advice_text):
     else:
         df.to_csv("healthifyai_advice.csv", mode='a', header=False, index=False)
 
-# --- APP TITLE ---
 st.title("🌿 HealthifyAI")
 st.markdown("<div class='tagline'>Empowering Your Breath, Elevating Your Life. <br> Because Every Breath Matters.</div>", unsafe_allow_html=True)
 
-# --- USER INPUT FORM ---
 with st.form("healthify_form"):
     user_query = st.text_input("💬 Ask HealthifyAI your health-related question:")
     current_aqi = st.slider("🌫️ Current AQI Level", min_value=0, max_value=500, value=100)
@@ -150,7 +133,6 @@ with st.form("healthify_form"):
     
     submit = st.form_submit_button("Get Personalized Advice ✅")
 
-# --- PROCESSING ---
 if submit and user_query:
     with st.spinner('Analyzing air quality and your health profile...'):
         advice_text = get_health_advice(
@@ -159,18 +141,13 @@ if submit and user_query:
             user_health_conditions=[c.strip() for c in user_conditions.split(",")] if user_conditions else []
         )
     
-    # Save to CSV
-    save_to_csv(
+        save_to_csv(
         user_query=user_query,
         current_aqi=current_aqi,
         user_health_conditions=[c.strip() for c in user_conditions.split(",")] if user_conditions else [],
         advice_text=advice_text
     )
-
-    # Display advice
     st.markdown(f"<div class='healthify-card'>{advice_text}</div>", unsafe_allow_html=True)
-
-    # Reset extra tips
     st.session_state.extra_tips = ""
 
 

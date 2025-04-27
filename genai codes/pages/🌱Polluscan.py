@@ -5,18 +5,15 @@ from dotenv import load_dotenv
 from PIL import Image
 import base64
 
-# --- Configuration ---
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 st.set_page_config(page_title="PolluScan: Smart Pollution Analyzer", layout="centered", page_icon="🌱")
 
-# --- Custom CSS with Green Theme ---
 background_color = "#f5f7fa"  # Light background
 text_color = "#ffffff"  # Dark text
 card_background = ""  # Card background
 button_color = "#4CAF50"  # Green button color
 
-# --- Custom CSS for UI/UX enhancements ---
 
 page_bg_img = """
 <style>
@@ -93,7 +90,6 @@ st.markdown(f"""
 </style>
 """, unsafe_allow_html=True)
 
-# --- Logo and Title ---
 st.title("🌱 PolluScan: Pollution Detection & Smart Recommendations")
 st.markdown("<p style='text-align: center; color: #000000;'>Click a picture of the air around you, and get the smartest AI insights NOW!</p>", unsafe_allow_html=True)
 #st.markdown(f"""
@@ -110,13 +106,8 @@ st.markdown("<p style='text-align: center; color: #000000;'>Click a picture of t
 # </div>
 #""", unsafe_allow_html=True)
 
-# --- Language Selection ---
 lang = st.selectbox("🌐 Choose your language for the report:", ["Kannada", "English", "Hindi", "Tamil", "Telugu"])
-
-# --- File Upload ---
 uploaded_file = st.file_uploader("📸 Upload a photo of the environment:", type=["jpeg", "jpg", "png"])
-
-# --- Functions ---
 def get_gemini_response(input_prompt, image_parts):
     model = genai.GenerativeModel("gemini-1.5-pro")
     response = model.generate_content([input_prompt, image_parts[0]])
@@ -132,8 +123,6 @@ def input_image_setup(uploaded_file):
         return image_parts
     else:
         raise FileNotFoundError("No image uploaded!")
-
-# --- Prompt Template ---
 prompt_template = f"""
 You are an experienced environmental scientist and public health expert.
 
@@ -190,8 +179,6 @@ Structure the output with:
 - Clear bullet points
 - Easy readability
 """
-
-# --- Analyze Button ---
 if uploaded_file:
     image = Image.open(uploaded_file)
     st.image(image, caption="📸 Uploaded Environment Image", use_column_width=True)
@@ -215,7 +202,6 @@ if uploaded_file:
             st.header("🌿 Pollution Analysis Report")
             st.markdown(response, unsafe_allow_html=True)
 
-            # --- Downloadable Report ---
             report_bytes = response.encode('utf-8')
             st.download_button(
                 label="📥 Download Pollution Report",
