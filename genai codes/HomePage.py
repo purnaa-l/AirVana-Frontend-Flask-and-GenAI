@@ -128,8 +128,8 @@ with col1:
         switch_page("polluscan")
     if st.button("💬 Health Impact Chatbot"):
         switch_page("healthifyAI")
-    if st.button("📝 Daily Air Quality Forecast"):
-        switch_page("daily_forecast")
+    if st.button("📰 Live Environmental News"):
+        switch_page("eco_news")
     if st.button("🎙️ Interactive Voice AQI Assistant"):
         switch_page("voice_assistant")
 
