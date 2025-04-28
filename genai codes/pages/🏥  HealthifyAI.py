@@ -117,7 +117,7 @@ def save_to_csv(user_query, current_aqi, user_health_conditions, advice_text):
     else:
         df.to_csv("healthifyai_advice.csv", mode='a', header=False, index=False)
 
-st.title("🌿 HealthifyAI")
+st.title("🌿🏥 HealthifyAI")
 st.markdown("<div class='tagline'>Empowering Your Breath, Elevating Your Life. <br> Because Every Breath Matters.</div>", unsafe_allow_html=True)
 
 with st.form("healthify_form"):
