@@ -23,7 +23,18 @@ body {
     border: 2px solid #CBD2A4;
     border-radius: 5px;
 }
-
+.highlight-link {
+    color: brown;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+  }
+  
+  .highlight-link:hover {
+    color: darkred;
+  }
+  
 .button {
     padding: 10px 20px;
     font-size: 16px;
