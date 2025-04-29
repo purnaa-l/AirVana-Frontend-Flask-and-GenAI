@@ -13,7 +13,7 @@ chat = model.start_chat()
 
 recognizer = sr.Recognizer()
 
-st.set_page_config(page_title="🌌 Gemini Voice Chatbot", page_icon="💬", layout="wide")
+st.set_page_config(page_title="🌌 Voice Chatbot", page_icon="💬", layout="wide")
 
 page_bg_img = """
 <style>
@@ -58,7 +58,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Title
 st.markdown("<h1 style='text-align: center; color: #F5F5F5;'>🌬️ Meet Airi – Your Voice & Text AI Companion 💬</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #D3D3D3;'>Hi, I’m <strong>Airi</strong>, AirSphere's GenAI assistant for smarter, healthier breathing 🌿. </p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #D3D3D3;'> AirSphere's GenAI assistant for smarter, healthier breathing 🌿. </p>", unsafe_allow_html=True)
 st.divider()
 
 if "chat_history" not in st.session_state:
