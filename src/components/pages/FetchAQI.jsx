@@ -416,7 +416,10 @@ const FetchAQI = () => {
                         </div>
                     </>
                 ) : (
-                    <h1 className="loading">Awaiting the City's Name!</h1>
+                <h5 className="loading">
+                    Want a dynamic map visualisation?{' '} Visit AeroMaps {' '}
+                    <a href="/aeromaps" className="highlight-link">NOW</a>!
+                </h5>
                 )}
             </div>
         </div>
