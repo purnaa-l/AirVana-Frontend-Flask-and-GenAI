@@ -134,8 +134,10 @@ with col1:
         switch_page("voice_assistant")
 
 with col2:
-    if st.button("🔔 Smart AQI Notifications"):
-        switch_page("smart_notifications")
+    if st.button("🌌 EarthLens - Natural Events Viewer"):
+        switch_page("earthlens")
+    # if st.button("🔔 Smart AQI Notifications"):
+    #     switch_page("smart_notifications")
     if st.button("📚 Summarized Policies & Health Reports"):
         switch_page("policy_summaries")
     if st.button("🤖 Real-Time FAQ Bot"):
