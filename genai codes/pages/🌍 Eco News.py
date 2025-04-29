@@ -22,8 +22,6 @@ page_bg_img = """
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
-# CSS Styling
-
 
 def save_articles_to_csv(articles):
     now = datetime.datetime.now()
