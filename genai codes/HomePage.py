@@ -138,8 +138,10 @@ with col2:
         switch_page("earthlens")
     # if st.button("🔔 Smart AQI Notifications"):
     #     switch_page("smart_notifications")
-    if st.button("📚 Summarized Policies & Health Reports"):
-        switch_page("policy_summaries")
+    # if st.button("📚 Summarized Policies & Health Reports"):
+    #     switch_page("policy_summaries")
+    if st.button("🎤 Aira Speaks – Your Podcast Companion"):
+        switch_page("aira_speaks")
     if st.button("🤖 Real-Time FAQ Bot"):
         switch_page("faq_bot")
     if st.button("🛡️ Personalized Health & Safety Tips"):
