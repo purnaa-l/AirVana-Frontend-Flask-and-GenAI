@@ -27,6 +27,7 @@ import PredictionForm from './MLComponents/PredictionForm';
 import RegionalTrendsHeroSectionHeroSection from './MLComponents/RegionalTrendsHeroSection';
 import GenAI from './components/GenAI';
 import AQIMap from './components/pages/AQIMap';
+import HealthImpactPrediction from './MLComponents/HealthImpactPrediction';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -76,6 +77,7 @@ const App = () => {
         <Route path='/regional-trends-risk-forecast' element={<RegionalTrendsHeroSectionHeroSection />} />
         <Route path='/genai' element={<GenAI />} />
         <Route path='/aeromaps' element={<AQIMap />} />
+        <Route path='/health-impact-prediction' element={<HealthImpactPrediction />} />
       </Routes>
     </BrowserRouter>
     
