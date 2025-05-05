@@ -72,6 +72,152 @@ GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")  # Make sure your .env contains thi
 genai.configure(api_key=GOOGLE_API_KEY)
 chat_model = genai.GenerativeModel("gemini-1.5-pro")
 
+risk_mapping = {
+    0: "Low Risk",
+    1: "Moderate Risk",
+    2: "High Risk",
+    3: "Very High Risk"
+}
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Get the base directory of app.py
+model_path = os.path.join(BASE_DIR, "health-impact-class", "HealthImpactClassmodel.pkl")
+scaler_path = os.path.join(BASE_DIR, "health-impact-class", "HealthImpactscaler.pkl")
+@app.route("/health-impact-class", methods=["POST", "OPTIONS"])
+# def health_impact_class():
+    
+#     try:
+#         # Load the trained model and scaler
+#         print(f"Loading model from: {model_path}")
+#         print(f"Loading scaler from: {scaler_path}")
+#         model = joblib.load(model_path)
+#         scaler = joblib.load(scaler_path)
+#     except Exception as e:
+#         print(f"🔥 Error loading model or scaler: {e}")
+#         return jsonify({"error": "Failed to load model or scaler."}), 500
+
+#     if request.method == 'OPTIONS':
+#         return '', 200  # CORS preflight request, return a successful response
+
+#     try:
+#         # Ensure the request has JSON data
+#         if request.is_json:
+#             data = request.get_json()
+
+#             # Extract the features from the request, setting default values if not present
+#             features = [
+#             data.get("AQI", 0.0),
+#             data.get("Temperature", 0.0),
+#             data.get("RespiratoryCases", 0.0),
+#             data.get("CardiovascularCases", 0.0),
+#             data.get("HospitalAdmissions", 0.0)
+#             ]
+
+
+#             if len(features) != 5:
+#                 return jsonify({"error": "Request must contain all 5 features."}), 400
+
+#             # Scale the features
+#             scaled_features = scaler.transform([features])
+
+#             # Predict the class
+#             prediction_class = model.predict(scaled_features)[0]
+
+#             # Map the numeric prediction to a human-readable risk level
+#             risk_mapping = {
+#                 0: "Low Risk",
+#                 1: "Moderate Risk",
+#                 2: "High Risk",
+#                 3: "Very High Risk",
+#                 4: "Extreme Risk"
+#             }
+#             if prediction_class not in risk_mapping:
+#                 return jsonify({"error": "Invalid prediction class."}), 400
+#             # Get the risk level from the mapping
+            
+#             risk_level = risk_mapping.get(prediction_class, "Unknown")
+
+#             # Return the prediction and risk level in the response
+#             return jsonify({
+#                 "HealthImpactClass": int(prediction_class),
+#                 "RiskLevel": risk_level
+#             })
+
+#         else:
+#             return jsonify({"error": "Request must be in JSON format"}), 415
+
+#     except Exception as e:
+#         print(f"🔥 Error during prediction: {e}")
+#         return jsonify({"error": "Prediction failed. Try again."}), 500
+
+    
+@app.route("/health-impact-class", methods=["POST", "OPTIONS"])
+def health_impact_class():
+    try:
+        # Load the trained model and scaler
+        print(f"Loading model from: {model_path}")
+        print(f"Loading scaler from: {scaler_path}")
+        model = joblib.load(model_path)
+        scaler = joblib.load(scaler_path)
+    except Exception as e:
+        print(f"🔥 Error loading model or scaler: {e}")
+        return jsonify({"error": "Failed to load model or scaler."}), 500
+
+    if request.method == 'OPTIONS':
+        return '', 200  # CORS preflight request, return a successful response
+
+    try:
+        # Ensure the request has JSON data
+        if request.is_json:
+            data = request.get_json()
+
+            # Extract the features from the request, setting default values if not present
+            features = [
+                data.get("AQI", 0.0),
+                data.get("Temperature", 0.0),
+                data.get("RespiratoryCases", 0.0),
+                data.get("CardiovascularCases", 0.0),
+                data.get("HospitalAdmissions", 0.0)
+            ]
+            print(f"Input Features: {features}")  # Debugging log
+
+            if len(features) != 5:
+                return jsonify({"error": "Request must contain all 5 features."}), 400
+
+            # Scale the features
+            scaled_features = scaler.transform([features])
+            print(f"Scaled Features: {scaled_features}")  # Debugging log
+
+            # Predict the class
+            prediction_class = model.predict(scaled_features)[0]
+            print(f"Predicted Class: {prediction_class}")  # Debugging log
+
+            # Map the numeric prediction to a human-readable risk level
+            risk_mapping = {
+                0: "Low Risk",
+                1: "Moderate Risk",
+                2: "High Risk",
+                3: "Very High Risk",
+                4: "Extreme Risk"
+            }
+            if prediction_class not in risk_mapping:
+                return jsonify({"error": "Invalid prediction class."}), 400
+
+            # Get the risk level from the mapping
+            risk_level = risk_mapping.get(prediction_class, "Unknown")
+
+            # Return the prediction and risk level in the response
+            return jsonify({
+                "HealthImpactClass": int(prediction_class),
+                "RiskLevel": risk_level
+            })
+
+        else:
+            return jsonify({"error": "Request must be in JSON format"}), 415
+
+    except Exception as e:
+        print(f"🔥 Error during prediction: {e}")
+        return jsonify({"error": "Prediction failed. Try again."}), 500
+
+
 @app.route("/predict", methods=["POST", "OPTIONS"])
 def predict():
     if request.method == 'OPTIONS':
