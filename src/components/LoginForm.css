@@ -1,0 +1,115 @@
+/* LoginForm.css */
+
+/* General Styles for the Form */
+.login-form {
+    background-color: #CBD2A4; /* Pale Olive Green */
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-50%);
+    animation: fadeIn 1s ease-out;
+    top: 100px;
+  }
+  
+  /* Heading Styles */
+  .login-heading {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  /* Input Fields */
+  .login-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #B4C56A; /* Slight darker olive border */
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .login-input:focus {
+    border-color: #6F9E3D; /* Darker Olive */
+    transform: scale(1.02);
+  }
+  
+  .login-input::placeholder {
+    color: #6F9E3D; /* Placeholder color */
+  }
+  
+  /* Submit Button */
+  .login-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #CBD2A4; /* Pale Olive Green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #B4C56A; /* Darker Olive Green */
+    transform: scale(1.05);
+  }
+  
+  /* Error Message */
+  .login-error {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: red;
+  }
+  
+  /* Input Focus and Button Hover Effects */
+  .login-input:focus, .login-button:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Full screen centering container */
+.login-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E9EED9; /* Light Olive/Beige background */
+  }
+  
+  /* Keep your existing .login-form styles */
+  .login-form {
+    background-color: #CBD2A4;
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease-out;
+  }
+  
