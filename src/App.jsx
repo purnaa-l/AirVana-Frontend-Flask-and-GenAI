@@ -28,6 +28,8 @@ import RegionalTrendsHeroSectionHeroSection from './MLComponents/RegionalTrendsH
 import GenAI from './components/GenAI';
 import AQIMap from './components/pages/AQIMap';
 import HealthImpactPrediction from './MLComponents/HealthImpactPrediction';
+import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignUpForm';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -78,6 +80,8 @@ const App = () => {
         <Route path='/genai' element={<GenAI />} />
         <Route path='/aeromaps' element={<AQIMap />} />
         <Route path='/health-impact-prediction' element={<HealthImpactPrediction />} />
+        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/login" element={<LoginForm />} />
       </Routes>
     </BrowserRouter>
     
