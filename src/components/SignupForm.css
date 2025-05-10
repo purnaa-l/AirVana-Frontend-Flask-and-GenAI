@@ -22,6 +22,15 @@
     animation: fadeIn 1s ease-out;
   }
   
+  /* Footer Styling */
+.signup-footer {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  color: inherit
+}
   /* Heading */
   .signup-heading {
     margin-bottom: 1.5rem;
