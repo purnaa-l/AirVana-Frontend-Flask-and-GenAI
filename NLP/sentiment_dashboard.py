@@ -156,7 +156,8 @@ if st.session_state.article_text and st.button("Analyze Article"):
 st.sidebar.header("📊 View Analytics")
 if st.sidebar.button("Show Charts"):
     st.subheader("📈 Sentiment Distribution in Stored Articles")
-    if os.path.exists("sentiment_output.csv"):
+    # if os.path.exists("sentiment_output.csv"):
+    if os.path.exists("compressed_data.csv"):
         df = pd.read_csv("sentiment_output.csv")
         sentiment_counts = df['sentiment'].value_counts()
         fig, ax = plt.subplots()
