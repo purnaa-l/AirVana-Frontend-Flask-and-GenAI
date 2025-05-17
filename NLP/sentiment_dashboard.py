@@ -68,6 +68,7 @@ if "article_text" not in st.session_state:
 
 # UI
 st.title("📰 Pollution News Sentiment Dashboard")
+
 st.header("📤 Submit Article (Text or Web URL)")
 
 option = st.radio("Choose input method:", ["Paste Text", "Scrape from Web"])
@@ -130,9 +131,17 @@ if st.session_state.article_text and st.button("Analyze Article"):
         sentiment = analyze_sentiment(st.session_state.article_text)
         summary = summarize_with_gemini(st.session_state.article_text)
         keywords, hashtags, bigram_data = extract_nlp_terms(st.session_state.article_text)
+        if sentiment == "POSITIVE":
+            color = "green"
+        elif sentiment == "NEGATIVE":
+            color = "red"
+        else:
+            color = "gray"
+
+
 
         st.subheader("✅ Results")
-        st.markdown(f"**Sentiment**: `{sentiment}`")
+        st.markdown(f"**Sentiment**: <span style='color:{color}; font-weight:bold'>{sentiment}</span>", unsafe_allow_html=True)
         st.markdown("**Summary:**")
         st.write(summary)
 
@@ -153,6 +162,13 @@ if st.session_state.article_text and st.button("Analyze Article"):
         st.error(f"Analysis failed: {str(e)}")
 
 # Analytics section
+st.sidebar.header("📊 View Analytics of the Stored Database")
+
+
+if st.sidebar.button("Show Charts"):
+    st.subheader("📈 Sentiment Distribution in Stored Articles")
+    # if os.path.exists("sentiment_output.csv"):
+    if os.path.exists("compressed_data.csv"):
 st.sidebar.header("📊 View Analytics")
 if st.sidebar.button("Show Charts"):
     st.subheader("📈 Sentiment Distribution in Stored Articles")
@@ -196,3 +212,17 @@ if st.sidebar.button("Show Charts"):
         st.sidebar.warning("Please analyze an article first.")
         st.sidebar.warning("Then click 'Show Charts' to view analytics.")
         st.markdown("**Note:** The charts will be displayed here.")
+
+with st.sidebar.expander("🤖 Model Info"):
+    st.markdown("""
+    This app uses a **pretrained sentiment analysis model** from Hugging Face `transformers`.
+
+    ```python
+    from transformers import pipeline
+    sentiment_model = pipeline("sentiment-analysis", framework="pt")
+    ```
+
+    - Classifies text as **Positive**, **Negative**, or **Neutral**.
+    - Fine-tuned transformer model with ~**65% accuracy**.
+    - Works best with text under 512 characters.
+    """)

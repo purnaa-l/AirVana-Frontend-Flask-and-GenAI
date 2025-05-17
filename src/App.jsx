@@ -30,6 +30,7 @@ import AQIMap from './components/pages/AQIMap';
 import HealthImpactPrediction from './MLComponents/HealthImpactPrediction';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignUpForm';
+// import Index from './NLP/med-info-sphere/src/pages/Index';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -82,6 +83,7 @@ const App = () => {
         <Route path='/health-impact-prediction' element={<HealthImpactPrediction />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
+
       </Routes>
     </BrowserRouter>
     
