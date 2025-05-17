@@ -83,7 +83,7 @@ const App = () => {
         <Route path='/health-impact-prediction' element={<HealthImpactPrediction />} />
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
-        {/* <Route path="/index" element={<Index />} /> */}
+
       </Routes>
     </BrowserRouter>
     
