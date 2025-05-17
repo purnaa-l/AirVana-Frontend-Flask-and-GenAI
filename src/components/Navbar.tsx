@@ -119,6 +119,9 @@ function Navbar({ theme, toggleTheme }) {
               <li className='nav-item'>
                 <Link to="/genai" className="nav-link" style={{ color: '#fff' }}>GenAI</Link>
               </li>
+              <li className='nav-item'>
+                <Link to="/nlp" className="nav-link" style={{ color: '#fff' }}>NLP</Link>
+              </li>
             </ul>
             {/* Theme Toggle Button */}
             <button
