@@ -3,13 +3,14 @@ const REST_API_BASE_URL="http://localhost:8080/api/aqi"
 const REST_API_HISTORICAL_URL="http://localhost:8080/api/historical-data"
 const REST_API_CONTACT_URL="http://localhost:8080/api/aqi/contact-us"
 const REST_API_ADD_CITY_URL="http://localhost:8080/api/aqi/admin/add-cities"
+const REST_API_NOTIFICATION_URL="http://localhost:8080/api/notifications/subscribe"
 
 export const listAQIs=()=>{
     return axios.get(REST_API_HISTORICAL_URL);
 }
 const REST_API_ENGAGEMENT_URL = "http://localhost:8080/api/engagement-data";
 
-
+export const postNotification=(notification)=>axios.post(REST_API_NOTIFICATION_URL, notification);
 export const postAQIs=(aqi)=>axios.post(REST_API_BASE_URL, aqi);
 export const postQuery=(query)=>axios.post(REST_API_CONTACT_URL, query);
 export const postCity=(city)=>axios.post(REST_API_ADD_CITY_URL, city);

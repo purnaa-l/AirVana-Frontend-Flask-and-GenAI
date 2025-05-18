@@ -31,6 +31,7 @@ import HealthImpactPrediction from './MLComponents/HealthImpactPrediction';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignUpForm';
 import NLP from './components/NLP';
+import Notifications from './components/pages/Notifications';
 // import Index from './NLP/med-info-sphere/src/pages/Index';
 
 const App = () => {
@@ -86,6 +87,7 @@ const App = () => {
         <Route path="/signup" element={<SignupForm />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/nlp" element={<NLP />} />
+        <Route path="/notifications" element={<Notifications />} />
         {/* <Route path="/med-info-sphere" element={<Index />} /> */}
 
       </Routes>
