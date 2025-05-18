@@ -70,12 +70,12 @@ const Notifications = () => {
     <div className="notifications-wrapper">
       <div className="notifications-header-card">
         <h2>🌱 We’re Committed to Clean Air</h2>
-        <p>Empowering you with personalized air quality alerts to breathe safer every day.</p>
+        <p>Empowering you with personalised air quality alerts to breathe safer every day. </p>
       </div>
 
       <div className="notifications-container">
         <ToastContainer />
-        <h2 className="notifications-title">📢 Get AQI Notifications</h2>
+        <h2 className="notifications-title">📢 Get real-time personalised AQI Notifications</h2>
         <form className="notifications-form" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -87,7 +87,7 @@ const Notifications = () => {
           />
           <input
             type="number"
-            placeholder="AQI Threshold (e.g. 100)"
+            placeholder="Desired AQI Threshold (e.g. 100)"
             value={aqiThreshold}
             onChange={(e) => setAqiThreshold(e.target.value)}
             className="notifications-input"

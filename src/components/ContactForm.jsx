@@ -84,6 +84,8 @@ const ContactForm = () => {
     <div className="unique-contact-form-wrapper">
       <div className="clouds"></div>
       <h2 className="unique-contact-form-title">Contact Us</h2>
+      <p className="unique-contact-form-description">
+        Want to reach out? Please fill out the form below, and we will get back to you ASAP! </p>
       <form className="unique-contact-form-content" onSubmit={handleSubmit}>
         <div className="unique-form-group-container">
           <label htmlFor="name">Name</label>
@@ -140,6 +142,17 @@ const ContactForm = () => {
           Submit
         </button>
       </form>
+      <footer className="unique-contact-form-footer">
+      <p>
+        🌱 Want personalised real-time notifications? Subscribe to our alerts{" "}
+      <a href="/notifications" style={{ color: "#ffd700", textDecoration: "none" }}>
+          NOW!
+      </a>
+      </p>
+        <p>Empowering you with personalised air quality alerts to breathe safer every day.</p>
+        <p>© 2025 AirSphere. All rights reserved.</p>
+      </footer>
+
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
 

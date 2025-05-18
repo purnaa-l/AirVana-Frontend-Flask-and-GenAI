@@ -111,5 +111,32 @@ textarea.unique-input-field {
 .unique-submit-btn:hover {
   background-color: #ffcc00;
 }
+.contact-us{
+  font-size: 2.5rem;
+  color: #ffd700;
+  margin-bottom: 20px;
+}
 
+.contact-us-para{
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
 
+.footer-text{
+  font-size: 1rem;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.unique-contact-form-description {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.unique-contact-form-footer {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-top: 20px;
+}

@@ -63,8 +63,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTree, faSun, faMoon, faRobot } from '@fortawesome/free-solid-svg-icons';
+import { faTree, faSun, faMoon, faRobot, faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Chatbot from './pages/Chatbot';
+import { FiMail } from "react-icons/fi"; // Add this at the top with other imports
+
 function Navbar({ theme, toggleTheme }) {
   const [chatbotOpen, setChatbotOpen] = useState(false);
 
@@ -107,12 +109,10 @@ function Navbar({ theme, toggleTheme }) {
               {/* <li className="nav-item">
                 <Link to="/predict-aqi" className="nav-link" style={{ color: '#fff' }}>Predict AQI</Link>
               </li> */}
-              <li className="nav-item">
-                <Link to="/view-past-aqis" className="nav-link" style={{ color: '#fff' }}>View Past AQIs</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/contact-form" className="nav-link" style={{ color: '#fff' }}>Contact Us</Link>
-              </li>
+
+
+               
+
               <li className='nav-item'>
                 <Link to="/predictions" className="nav-link" style={{ color: '#fff' }}>ML Predictions</Link>
               </li>
@@ -124,6 +124,38 @@ function Navbar({ theme, toggleTheme }) {
               </li>
             </ul>
             {/* Theme Toggle Button */}
+            <Link to="/notifications" style={{ textDecoration: 'none' }}>
+            <button
+              className="notification-button"
+              style={{
+              background: 'none',
+              border: 'none',
+              color: '#fff',
+              fontSize: '1.5rem',
+              marginLeft: '1rem',
+              cursor: 'pointer'
+          }}
+          >
+    <FontAwesomeIcon icon={faBell} />
+            
+  </button>
+</Link> 
+            <Link to="/contact-form" style={{ textDecoration: 'none' }}>
+            <button
+              className="notification-button"
+              style={{
+              background: 'none',
+              border: 'none',
+              color: '#fff',
+              fontSize: '1.5rem',
+              marginLeft: '1rem',
+              cursor: 'pointer'
+          }}
+          >
+    <FontAwesomeIcon icon={faEnvelope} />
+            
+  </button>
+</Link>
             <button
               className="theme-toggle-button"
               onClick={toggleTheme}
