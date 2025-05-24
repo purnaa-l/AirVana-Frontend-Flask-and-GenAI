@@ -109,7 +109,7 @@ st.markdown("<p style='text-align: center; color: #000000;'>Click a picture of t
 lang = st.selectbox("🌐 Choose your language for the report:", ["Kannada", "English", "Hindi", "Tamil", "Telugu"])
 uploaded_file = st.file_uploader("📸 Upload a photo of the environment:", type=["jpeg", "jpg", "png"])
 def get_gemini_response(input_prompt, image_parts):
-    model = genai.GenerativeModel("gemini-1.5-pro")
+    model = genai.GenerativeModel("gemini-1.5-flash") #model changed to "gemini-1.5-flash" from 1.5-pro due to token limit issues
     response = model.generate_content([input_prompt, image_parts[0]])
     return response.text
 
