@@ -142,8 +142,8 @@ with col2:
     #     switch_page("policy_summaries")
     if st.button("🎤 Aira Speaks – Your Podcast Companion"):
         switch_page("aira_speaks")
-    if st.button("🤖 Real-Time FAQ Bot"):
-        switch_page("faq_bot")
+    if st.button("🌳 EcoImpact - Real Time Simluator"):
+        switch_page("ecoimpact")
     if st.button("🛡️ Personalized Health & Safety Tips"):
         switch_page("health_safety_tips")
 
