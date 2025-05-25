@@ -136,10 +136,6 @@ with col1:
 with col2:
     if st.button("🌌 EarthLens - Natural Events Viewer"):
         switch_page("earthlens")
-    # if st.button("🔔 Smart AQI Notifications"):
-    #     switch_page("smart_notifications")
-    # if st.button("📚 Summarized Policies & Health Reports"):
-    #     switch_page("policy_summaries")
     if st.button("🎤 Aira Speaks – Your Podcast Companion"):
         switch_page("aira_speaks")
     if st.button("🌳 EcoImpact - Real Time Simluator"):
