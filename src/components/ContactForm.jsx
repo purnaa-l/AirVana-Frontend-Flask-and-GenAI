@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import toast styles
-import './ContactForm.css';
+import "./ContactForm.css";
 import { postQuery } from "../services/AqiService";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +10,7 @@ const ContactForm = () => {
     mobileNumber: "",
     query: "",
   });
-  
+
   const [errors, setErrors] = useState({
     name: "",
     email: "",
@@ -54,38 +54,32 @@ const ContactForm = () => {
     return isValid;
   };
 
-  const handleSubmit = async (e) =>  {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      try{
-      const formResponse=await postQuery(formData);
-      console.log(formResponse);
-      toast.success("Form submitted successfully!"); // Success toast
-      setFormData({ name: "", email: "", mobileNumber: "", query: "" });
-    } 
-    catch{
-      console.log("Error submitting data");
-      toast.error("Something went wrong. Try again.")
-      setFormData({ name: "", email: "", mobileNumber: "", query: "" });
-
-    }
-  }
-    else {
-
+      try {
+        const formResponse = await postQuery(formData);
+        console.log(formResponse);
+        toast.success("Form submitted successfully!"); // Success toast
+        setFormData({ name: "", email: "", mobileNumber: "", query: "" });
+      } catch {
+        console.log("Error submitting data");
+        toast.error("Something went wrong. Try again.");
+        setFormData({ name: "", email: "", mobileNumber: "", query: "" });
+      }
+    } else {
       toast.error("Please correct the errors in the form."); // Error toast
     }
-  }
-
-
-
-
+  };
 
   return (
     <div className="unique-contact-form-wrapper">
       <div className="clouds"></div>
       <h2 className="unique-contact-form-title">Contact Us</h2>
       <p className="unique-contact-form-description">
-        Want to reach out? Please fill out the form below, and we will get back to you ASAP! </p>
+        Want to reach out? Please fill out the form below, and we will get back
+        to you ASAP!{" "}
+      </p>
       <form className="unique-contact-form-content" onSubmit={handleSubmit}>
         <div className="unique-form-group-container">
           <label htmlFor="name">Name</label>
@@ -95,7 +89,9 @@ const ContactForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`unique-input-field ${errors.name ? "unique-error" : ""}`}
+            className={`unique-input-field ${
+              errors.name ? "unique-error" : ""
+            }`}
           />
           {errors.name && <p className="unique-error-text">{errors.name}</p>}
         </div>
@@ -108,7 +104,9 @@ const ContactForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`unique-input-field ${errors.email ? "unique-error" : ""}`}
+            className={`unique-input-field ${
+              errors.email ? "unique-error" : ""
+            }`}
           />
           {errors.email && <p className="unique-error-text">{errors.email}</p>}
         </div>
@@ -121,9 +119,13 @@ const ContactForm = () => {
             name="mobileNumber"
             value={formData.mobileNumber}
             onChange={handleChange}
-            className={`unique-input-field ${errors.mobileNumber ? "unique-error" : ""}`}
+            className={`unique-input-field ${
+              errors.mobileNumber ? "unique-error" : ""
+            }`}
           />
-          {errors.mobileNumber && <p className="unique-error-text">{errors.mobileNumber}</p>}
+          {errors.mobileNumber && (
+            <p className="unique-error-text">{errors.mobileNumber}</p>
+          )}
         </div>
 
         <div className="unique-form-group-container">
@@ -133,7 +135,9 @@ const ContactForm = () => {
             name="query"
             value={formData.query}
             onChange={handleChange}
-            className={`unique-input-field ${errors.query ? "unique-error" : ""}`}
+            className={`unique-input-field ${
+              errors.query ? "unique-error" : ""
+            }`}
           />
           {errors.query && <p className="unique-error-text">{errors.query}</p>}
         </div>
@@ -143,19 +147,24 @@ const ContactForm = () => {
         </button>
       </form>
       <footer className="unique-contact-form-footer">
-      <p>
-        🌱 Want personalised real-time notifications? Subscribe to our alerts{" "}
-      <a href="/notifications" style={{ color: "#ffd700", textDecoration: "none" }}>
-          NOW!
-      </a>
-      </p>
-        <p>Empowering you with personalised air quality alerts to breathe safer every day.</p>
-        <p>© 2025 AirSphere. All rights reserved.</p>
+        <p>
+          🌱 Want personalised real-time notifications? Subscribe to our alerts{" "}
+          <a
+            href="/notifications"
+            style={{ color: "#ffd700", textDecoration: "none" }}
+          >
+            NOW!
+          </a>
+        </p>
+        <p>
+          Empowering you with personalised air quality alerts to breathe safer
+          every day.
+        </p>
+        <p>© 2025 AirVana. All rights reserved.</p>
       </footer>
 
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
-
   );
 };
 

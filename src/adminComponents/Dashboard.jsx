@@ -2,16 +2,30 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Spinner from "../components/layouts/Spinner";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, BarChart, Bar, PieChart, Pie } from "recharts";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+} from "recharts";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import './Dashboard.css'
+import "./Dashboard.css";
 
 // Function to compute standard deviation
 const computeStandardDeviation = (values) => {
   const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
-  const variance = values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / values.length;
+  const variance =
+    values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) /
+    values.length;
   return Math.sqrt(variance);
 };
 
@@ -49,7 +63,9 @@ const Dashboard = () => {
 
   const fetchAqiData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/sql/aqi/avg-aqi");
+      const response = await axios.get(
+        "http://localhost:8080/api/sql/aqi/avg-aqi"
+      );
       console.log("API Response:", response);
       const { data } = response;
 
@@ -58,13 +74,14 @@ const Dashboard = () => {
         const aqiValues = data.map((item) => item[1]);
 
         // Calculate Aggregates
-        const avgAqi = aqiValues.reduce((acc, value) => acc + value, 0) / aqiValues.length;
+        const avgAqi =
+          aqiValues.reduce((acc, value) => acc + value, 0) / aqiValues.length;
         const maxAqi = Math.max(...aqiValues);
-        const minAqi = Math.min(...aqiValues.filter(aqi=>aqi>0));
+        const minAqi = Math.min(...aqiValues.filter((aqi) => aqi > 0));
         const medianAqi = computeMedian(aqiValues);
         const stdevAqi = computeStandardDeviation(aqiValues);
         const totalAqi = aqiValues.reduce((acc, value) => acc + value, 0);
-        console.log(minAqi)
+        console.log(minAqi);
         // Set computed data;
         setAqiData({
           avgAqi: avgAqi.toFixed(2),
@@ -77,14 +94,13 @@ const Dashboard = () => {
         });
 
         // Prepare city data for charts
-        const cityData = data.map(item => ({
-          name: item[0],  // City name
+        const cityData = data.map((item) => ({
+          name: item[0], // City name
           value: item[1], // AQI value
         }));
 
         setCities(cityData);
-        toast.success("Successfully fetched!")
-
+        toast.success("Successfully fetched!");
       } else {
         toast.error("No data found", {
           position: toast.POSITION.TOP_CENTER,
@@ -104,9 +120,13 @@ const Dashboard = () => {
     <div className="admin-dashboard-layout">
       <div className="admin-icon-margin">
         <ul className="admin-icon-list">
-          <li className="admin-icon-item" onClick={() => navigate("/admin")}>🏠</li>
+          <li className="admin-icon-item" onClick={() => navigate("/admin")}>
+            🏠
+          </li>
           <li className="admin-icon-item">⚙️</li>
-          <li className="admin-icon-item" onClick={() => navigate("/add-data")}>➕</li>
+          <li className="admin-icon-item" onClick={() => navigate("/add-data")}>
+            ➕
+          </li>
         </ul>
       </div>
 
@@ -115,7 +135,9 @@ const Dashboard = () => {
           <div className="admin-typing-animation">
             <span className="admin-greeting-text">Hello Admin</span>
           </div>
-          <p className="admin-greeting-subtext">Welcome to the AirSphere dashboard</p>
+          <p className="admin-greeting-subtext">
+            Welcome to the AirVana dashboard
+          </p>
         </div>
 
         <div className="admin-date-picker-container">
@@ -159,7 +181,9 @@ const Dashboard = () => {
           </div>
           <div className="admin-dashboard-card">
             <h3 className="admin-card-title">Record Count</h3>
-            <p className="admin-card-percentage positive">{aqiData.recordCount}</p>
+            <p className="admin-card-percentage positive">
+              {aqiData.recordCount}
+            </p>
           </div>
         </div>
 

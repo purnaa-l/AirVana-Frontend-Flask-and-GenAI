@@ -1,11 +1,11 @@
 .prediction-form-page {
-  background: url('/images/air.png') repeat-x;
-  animation: moveClouds 60s linear infinite;
-  min-height: 100vh;
-  padding: 50px;
-  background-color: #E9EED9;
-  color: #493628;
-  font-family: 'Poiret One', sans-serif;
+     background: url('/images/air.png') repeat-x;
+    animation: moveClouds 60s linear infinite;
+    min-height: 100vh;
+    padding: 50px;
+    background-color: #E9EED9;
+    color: #493628;
+    font-family: 'Poiret One', sans-serif;
 }
 
 @keyframes moveClouds {

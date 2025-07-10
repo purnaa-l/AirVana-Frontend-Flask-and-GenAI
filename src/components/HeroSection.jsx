@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import './HeroSection.css';
+import React, { useState, useEffect } from "react";
+import "./HeroSection.css";
 
 function HeroSection() {
   const phrases = [
-    'Welcome to AirSphere!',
-    'We offer cutting-edge solutions that put air quality data at your fingertips.',
-    'With our real-time insights, you can breathe easy and take control of your environment.',
-    'We provide data that empowers you to make informed decisions for cleaner air and a healthier life.',
-    'Explore our website for more details!'
+    "Welcome to AirVana!",
+    "We offer cutting-edge solutions that put air quality data at your fingertips.",
+    "With our real-time insights, you can breathe easy and take control of your environment.",
+    "We provide data that empowers you to make informed decisions for cleaner air and a healthier life.",
+    "Explore our website for more details!",
   ];
 
-  const [loadingText, setLoadingText] = useState(''); // Current text being typed
+  const [loadingText, setLoadingText] = useState(""); // Current text being typed
   const [index, setIndex] = useState(0); // Current phrase index
   const [typingIndex, setTypingIndex] = useState(0); // Current character index for typing
 
@@ -25,7 +25,7 @@ function HeroSection() {
     } else {
       // When phrase is fully typed, wait before starting the next phrase
       const phraseTimeout = setTimeout(() => {
-        setLoadingText(''); // Clear text for the next phrase
+        setLoadingText(""); // Clear text for the next phrase
         setTypingIndex(0); // Reset character index
         setIndex((prevIndex) => (prevIndex + 1) % phrases.length); // Move to the next phrase (loop)
       }, 2000); // Wait 2 seconds before clearing text
@@ -43,8 +43,6 @@ function HeroSection() {
         <button className="cta-button">Predict Accurate AQIs</button>
         <button className="cta-button">View Past AQIs</button>
       </div> */}
-
-
     </div>
   );
 }

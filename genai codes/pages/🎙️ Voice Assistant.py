@@ -58,7 +58,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Title
 st.markdown("<h1 style='text-align: center; color: #F5F5F5;'>🌬️ Meet Airi – Your Voice & Text AI Companion 💬</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #D3D3D3;'> AirSphere's GenAI assistant for smarter, healthier breathing 🌿. </p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #D3D3D3;'> AirVana's GenAI assistant for smarter, healthier breathing 🌿. </p>", unsafe_allow_html=True)
 st.divider()
 
 if "chat_history" not in st.session_state:
@@ -84,8 +84,8 @@ def display_chat():
 display_chat()
 
 if len(st.session_state.chat_history) == 0:
-     st.session_state.chat_history.append({"role": "model", "content": "Hi, I am Airi: AirSphere's GenAI-powered intelligent assistant, how can I help you today?"})
-     store_chat("Assistant", "Hi, I am Airi! I am AirSphere's GenAI-powered intelligent assistant, how can I help you today?")
+     st.session_state.chat_history.append({"role": "model", "content": "Hi, I am Airi: AirVana's GenAI-powered intelligent assistant, how can I help you today?"})
+     store_chat("Assistant", "Hi, I am Airi! I am AirVana's GenAI-powered intelligent assistant, how can I help you today?")
 
 col1, col2, col3 = st.columns([1, 1, 1])  
 with col2:

@@ -10,7 +10,7 @@
 //         {/* Logo Section */}
 //         <Link to="/" className="navbar-brand d-flex align-items-center" style={{ color: '#fff', fontFamily: 'Poiret One' }}>
 //           <FontAwesomeIcon icon={faTree} className="me-2" />
-//           AirSphere
+//           AirVana
 //         </Link>
 
 //         {/* Navbar Toggler for Mobile View */}
@@ -46,9 +46,9 @@
 //             </li>
 //           </ul>
 //           {/* Theme Toggle Button */}
-//           <button 
-//             className="theme-toggle-button" 
-//             onClick={toggleTheme} 
+//           <button
+//             className="theme-toggle-button"
+//             onClick={toggleTheme}
 //             style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.5rem', marginLeft: '1rem', cursor: 'pointer' }}
 //           >
 //             {theme === 'light' ? <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} />}
@@ -60,11 +60,18 @@
 // }
 
 // export default Navbar;
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTree, faSun, faMoon, faRobot, faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import Chatbot from './pages/Chatbot';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTree,
+  faSun,
+  faMoon,
+  faRobot,
+  faBell,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
+import Chatbot from "./pages/Chatbot";
 import { FiMail } from "react-icons/fi"; // Add this at the top with other imports
 
 function Navbar({ theme, toggleTheme }) {
@@ -76,12 +83,19 @@ function Navbar({ theme, toggleTheme }) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-md" style={{ backgroundColor: '#000', padding: '1rem 0' }}>
+      <nav
+        className="navbar navbar-expand-md"
+        style={{ backgroundColor: "#000", padding: "1rem 0" }}
+      >
         <div className="container-fluid">
           {/* Logo Section */}
-          <Link to="/" className="navbar-brand d-flex align-items-center" style={{ color: '#fff', fontFamily: 'Poiret One' }}>
+          <Link
+            to="/"
+            className="navbar-brand d-flex align-items-center"
+            style={{ color: "#fff", fontFamily: "Poiret One" }}
+          >
             <FontAwesomeIcon icon={faTree} className="me-2" />
-            AirSphere
+            AirVana
           </Link>
 
           {/* Navbar Toggler for Mobile View */}
@@ -101,78 +115,112 @@ function Navbar({ theme, toggleTheme }) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link" style={{ color: '#fff' }}>Home</Link>
+                <Link to="/" className="nav-link" style={{ color: "#fff" }}>
+                  Home
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to="/fetch-aqi" className="nav-link" style={{ color: '#fff' }}>Fetch AQI</Link>
+                <Link
+                  to="/fetch-aqi"
+                  className="nav-link"
+                  style={{ color: "#fff" }}
+                >
+                  Fetch AQI
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to="/view-past-aqis" className="nav-link" style={{ color: '#fff' }}>View Historical Data</Link>
-              </li> 
-
-
-               
-
-              <li className='nav-item'>
-                <Link to="/predictions" className="nav-link" style={{ color: '#fff' }}>ML Predictions</Link>
+                <Link
+                  to="/view-past-aqis"
+                  className="nav-link"
+                  style={{ color: "#fff" }}
+                >
+                  View Historical Data
+                </Link>
               </li>
-              <li className='nav-item'>
-                <Link to="/genai" className="nav-link" style={{ color: '#fff' }}>GenAI</Link>
+
+              <li className="nav-item">
+                <Link
+                  to="/predictions"
+                  className="nav-link"
+                  style={{ color: "#fff" }}
+                >
+                  ML Predictions
+                </Link>
               </li>
-              <li className='nav-item'>
-                <Link to="/nlp" className="nav-link" style={{ color: '#fff' }}>NLP</Link>
+              <li className="nav-item">
+                <Link
+                  to="/genai"
+                  className="nav-link"
+                  style={{ color: "#fff" }}
+                >
+                  GenAI
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/nlp" className="nav-link" style={{ color: "#fff" }}>
+                  NLP
+                </Link>
               </li>
             </ul>
             {/* Theme Toggle Button */}
-            <Link to="/notifications" style={{ textDecoration: 'none' }}>
-            <button
-              className="notification-button"
-              style={{
-              background: 'none',
-              border: 'none',
-              color: '#fff',
-              fontSize: '1.5rem',
-              marginLeft: '1rem',
-              cursor: 'pointer'
-          }}
-          >
-    <FontAwesomeIcon icon={faBell} />
-            
-  </button>
-</Link> 
-            <Link to="/contact-form" style={{ textDecoration: 'none' }}>
-            <button
-              className="notification-button"
-              style={{
-              background: 'none',
-              border: 'none',
-              color: '#fff',
-              fontSize: '1.5rem',
-              marginLeft: '1rem',
-              cursor: 'pointer'
-          }}
-          >
-    <FontAwesomeIcon icon={faEnvelope} />
-            
-  </button>
-</Link>
+            <Link to="/notifications" style={{ textDecoration: "none" }}>
+              <button
+                className="notification-button"
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: "1.5rem",
+                  marginLeft: "1rem",
+                  cursor: "pointer",
+                }}
+              >
+                <FontAwesomeIcon icon={faBell} />
+              </button>
+            </Link>
+            <Link to="/contact-form" style={{ textDecoration: "none" }}>
+              <button
+                className="notification-button"
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: "1.5rem",
+                  marginLeft: "1rem",
+                  cursor: "pointer",
+                }}
+              >
+                <FontAwesomeIcon icon={faEnvelope} />
+              </button>
+            </Link>
             <button
               className="theme-toggle-button"
               onClick={toggleTheme}
-              style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.5rem', marginLeft: '1rem', cursor: 'pointer' }}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#fff",
+                fontSize: "1.5rem",
+                marginLeft: "1rem",
+                cursor: "pointer",
+              }}
             >
-              {theme === 'light' ? <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} />}
+              {theme === "light" ? (
+                <FontAwesomeIcon icon={faMoon} />
+              ) : (
+                <FontAwesomeIcon icon={faSun} />
+              )}
             </button>
             {/* Chatbot Button */}
             <button
               onClick={toggleChatbot}
               style={{
-                background: 'none',
-                border: 'none',
-                color: '#fff',
-                fontSize: '1.5rem',
-                marginLeft: '1rem',
-                cursor: 'pointer'
+                background: "none",
+                border: "none",
+                color: "#fff",
+                fontSize: "1.5rem",
+                marginLeft: "1rem",
+                cursor: "pointer",
               }}
             >
               <FontAwesomeIcon icon={faRobot} />
