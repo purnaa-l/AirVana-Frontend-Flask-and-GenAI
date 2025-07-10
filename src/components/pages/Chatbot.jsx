@@ -6,7 +6,7 @@ const Chatbot = ({ closeChatbot }) => {
     {
       role: "bot",
       content:
-        "Hi! I am Aira, your AirSphere Assistant. 🌬️ I'm happy to help! Ask me any query about air quality, predictions, or anything else.",
+        "Hi! I am Aira, your AirVana Assistant. 🌬️ I'm happy to help! Ask me any query about air quality, predictions, or anything else.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -56,7 +56,8 @@ const Chatbot = ({ closeChatbot }) => {
         boxShadow: "0px 0px 10px rgba(0,0,0,0.2)",
         borderRadius: "10px",
         overflow: "hidden",
-        fontFamily: "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif", // Standard font
+        fontFamily:
+          "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif", // Standard font
       }}
     >
       <div
@@ -67,7 +68,7 @@ const Chatbot = ({ closeChatbot }) => {
           textAlign: "center",
         }}
       >
-        <strong>Aira - Your AirSphere Assistant</strong>
+        <strong>Aira - Your AirVana Assistant</strong>
         <span
           style={{ float: "right", cursor: "pointer", color: "#fff" }}
           onClick={closeChatbot}
@@ -118,7 +119,9 @@ const Chatbot = ({ closeChatbot }) => {
           </p>
         )}
       </div>
-      <div style={{ display: "flex", padding: "5px", borderTop: "1px solid #ddd" }}>
+      <div
+        style={{ display: "flex", padding: "5px", borderTop: "1px solid #ddd" }}
+      >
         <input
           type="text"
           value={input}
@@ -161,7 +164,7 @@ export default Chatbot;
 //     {
 //       role: "bot",
 //       content:
-//         "Hi! I am Aira, your AirSphere Assistant. 🌬️ I'm happy to help! Ask me any query about air quality, predictions, or anything else.",
+//         "Hi! I am Aira, your AirVana Assistant. 🌬️ I'm happy to help! Ask me any query about air quality, predictions, or anything else.",
 //     },
 //   ]);
 //   const [input, setInput] = useState("");
@@ -244,7 +247,7 @@ export default Chatbot;
 //           textAlign: "center",
 //         }}
 //       >
-//         <strong>Aira - Your AirSphere Assistant</strong>
+//         <strong>Aira - Your AirVana Assistant</strong>
 //         <span
 //           style={{ float: "right", cursor: "pointer", color: "#fff" }}
 //           onClick={closeChatbot}
@@ -351,11 +354,10 @@ export default Chatbot;
 // //     {
 // //       role: "bot",
 // //       content:
-// //         "Hi! I am Aira, your AirSphere Assistant. 🌬️ I'm happy to help! Ask me any query about air quality, predictions, or anything else.",
+// //         "Hi! I am Aira, your AirVana Assistant. 🌬️ I'm happy to help! Ask me any query about air quality, predictions, or anything else.",
 // //     },
 // //   ]);
 
-  
 // //   const [input, setInput] = useState("");
 // //   const [typing, setTyping] = useState(false);
 // //   const [isExpanded, setIsExpanded] = useState(true); // State for chat window size
@@ -400,7 +402,6 @@ export default Chatbot;
 // //   useEffect(() => {
 // //     console.log('startListening:', startListening);
 // //   }, [startListening]);
-  
 
 // //   // Function to toggle chat window size
 // //   const toggleChatWindow = () => {
@@ -431,7 +432,6 @@ export default Chatbot;
 // //       console.error("startListening function is not available.");
 // //     }
 // //   };
-  
 
 // //   return (
 // //     <div
@@ -457,7 +457,7 @@ export default Chatbot;
 // //           textAlign: "center",
 // //         }}
 // //       >
-// //         <strong>Aira - Your AirSphere Assistant</strong>
+// //         <strong>Aira - Your AirVana Assistant</strong>
 // //         <span
 // //           style={{ float: "right", cursor: "pointer", color: "#fff" }}
 // //           onClick={closeChatbot}

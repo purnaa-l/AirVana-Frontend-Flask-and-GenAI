@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import './GenAI.css'; // Link to the CSS file
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./GenAI.css"; // Link to the CSS file
+import { Link } from "react-router-dom";
 
 function GenAI() {
   const phrases = [
-    'Harness the power of the skies with Generative AI.',
-    'Master your environment with AeroAI.',
-    'Predict. Prepare. Prevail — with data-driven clarity.',
-    'Transform the past into a future you can breathe in.',
-    'AeroAI: Elevate your air intelligence, elevate your life.'
+    "Harness the power of the skies with Generative AI.",
+    "Master your environment with AeroAI.",
+    "Predict. Prepare. Prevail — with data-driven clarity.",
+    "Transform the past into a future you can breathe in.",
+    "AeroAI: Elevate your air intelligence, elevate your life.",
   ];
 
-  const [scrollText, setScrollText] = useState('');
+  const [scrollText, setScrollText] = useState("");
   const [index, setIndex] = useState(0);
   const [typingIndex, setTypingIndex] = useState(0);
 
@@ -25,7 +25,7 @@ function GenAI() {
       return () => clearTimeout(typingTimeout);
     } else {
       const phraseTimeout = setTimeout(() => {
-        setScrollText('');
+        setScrollText("");
         setTypingIndex(0);
         setIndex((prevIndex) => (prevIndex + 1) % phrases.length);
       }, 2000);
@@ -39,9 +39,11 @@ function GenAI() {
         <video src="/videos/video-7.mp4" autoPlay loop muted />
       </div>
       <div className="text-overlay">
-        <h2 className="hero-heading">AeroAI: AirSphere's GenAI Powered Engine</h2>
+        <h2 className="hero-heading">AeroAI: AirVana's GenAI Powered Engine</h2>
         <p className="scrolling-text">{scrollText}</p>
-        <Link to="http://localhost:8501/" className="cta-button">Dive Into Insights NOW!</Link>
+        <Link to="http://localhost:8501/" className="cta-button">
+          Dive Into Insights NOW!
+        </Link>
       </div>
     </div>
   );

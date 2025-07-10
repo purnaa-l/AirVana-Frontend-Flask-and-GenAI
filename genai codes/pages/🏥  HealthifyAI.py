@@ -153,4 +153,4 @@ if submit and user_query:
 
 # --- FOOTER ---
 st.markdown("---")
-st.caption("Crafted with ❤️ by HealthifyAI; AirSphere's Best AI-Powered Health Bot • Because Every Breath Matters.")
+st.caption("Crafted with ❤️ by HealthifyAI; AirVana's Best AI-Powered Health Bot • Because Every Breath Matters.")

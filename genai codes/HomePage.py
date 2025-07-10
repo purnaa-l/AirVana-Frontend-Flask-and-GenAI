@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 st.set_page_config(
-    page_title="AeroAI - AirSphere's GenAI Powered Assistant!",
+    page_title="AeroAI - AirVana's GenAI Powered Assistant!",
     page_icon="🌌",
     layout="centered"
 )
@@ -112,7 +112,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # --- Welcome Title ---
 st.markdown("<h1 class='fancy-title'>Welcome to AeroAI 🌳🌱</h1>", unsafe_allow_html=True)
-st.markdown("<h3 class='subheading'>AirSphere's Smart GenAI Assistant🌍</h3>", unsafe_allow_html=True)
+st.markdown("<h3 class='subheading'>AirVana's Smart GenAI Assistant🌍</h3>", unsafe_allow_html=True)
 
 # --- Divider ---
 st.write("")
@@ -130,18 +130,20 @@ with col1:
         switch_page("healthifyAI")
     if st.button("📰 Live Environmental News"):
         switch_page("eco_news")
-    if st.button("🎙️ Interactive Voice AQI Assistant"):
-        switch_page("voice_assistant")
+    # if st.button("🎙️ Interactive Voice AQI Assistant"):
+    #     switch_page("voice_assistant")
 
 with col2:
     if st.button("🌌 EarthLens - Natural Events Viewer"):
         switch_page("earthlens")
-    if st.button("🎤 Aira Speaks – Your Podcast Companion"):
-        switch_page("aira_speaks")
+    # if st.button("🎤 Aira Speaks – Your Podcast Companion"):
+    #     switch_page("aira_speaks")
+    if st.button("🎙️ Interactive Voice AQI Assistant"):
+        switch_page("voice_assistant")
     if st.button("🌳 EcoImpact - Real Time Simluator"):
         switch_page("ecoimpact")
-    if st.button("🛡️ Personalized Health & Safety Tips"):
-        switch_page("health_safety_tips")
+    # if st.button("🛡️ Personalized Health & Safety Tips"):
+    #     switch_page("health_safety_tips")
 
 # --- Footer ---
 st.write("")
@@ -150,7 +152,7 @@ st.divider()
 st.markdown("""
 <footer class="footer">
     <p style="color: #ffffff;">&copy; 2025 AeroAI. All rights reserved.</p>
-    <p style="color: #ffffff;">Developed by AirSphere Team 🌱</p>
+    <p style="color: #ffffff;">Developed by AirVana Team 🌱</p>
 </footer>
 """, unsafe_allow_html=True)
 

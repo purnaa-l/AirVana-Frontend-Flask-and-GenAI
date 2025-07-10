@@ -123,5 +123,5 @@ if st.sidebar.button("🔎 Fetch Events"):
 # Footer
 st.markdown("""
 ---
-Made with ❤️ by **AirSphere Team** | Powered by NASA EONET API | [EONET Docs](https://eonet.gsfc.nasa.gov/docs/v3)
+Made with ❤️ by **AirVana Team** | Powered by NASA EONET API | [EONET Docs](https://eonet.gsfc.nasa.gov/docs/v3)
 """)

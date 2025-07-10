@@ -44,7 +44,9 @@ function ViewEngagement() {
   const handleDownloadPDF = async () => {
     const element = document.querySelector(".main-dashboard");
     if (!element) {
-      toast.error("Dashboard element not found!", { position: toast.POSITION.TOP_CENTER });
+      toast.error("Dashboard element not found!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
       return;
     }
 
@@ -56,12 +58,14 @@ function ViewEngagement() {
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-      const formattedDate = selectedDate.toLocaleDateString("en-US", {
-        month: "2-digit",
-        day: "2-digit",
-        year: "numeric",
-      }).replace(/\//g, "-");
-      
+      const formattedDate = selectedDate
+        .toLocaleDateString("en-US", {
+          month: "2-digit",
+          day: "2-digit",
+          year: "numeric",
+        })
+        .replace(/\//g, "-");
+
       const fileName = `dashboard_${formattedDate}.pdf`;
       pdf.save(fileName);
 
@@ -83,10 +87,16 @@ function ViewEngagement() {
       {/* Sidebar */}
       <div className="icon-margin">
         <ul className="icon-list">
-          <li className="icon-item" onClick={() => navigate("/admin")}>🏠</li>
+          <li className="icon-item" onClick={() => navigate("/admin")}>
+            🏠
+          </li>
           <li className="icon-item">⚙️</li>
-          <li className="icon-item" onClick={()=>navigate("/add-data")}>➕</li>
-          <li className="icon-item" onClick={handleDownloadPDF}>📄</li>
+          <li className="icon-item" onClick={() => navigate("/add-data")}>
+            ➕
+          </li>
+          <li className="icon-item" onClick={handleDownloadPDF}>
+            📄
+          </li>
         </ul>
       </div>
 
@@ -96,12 +106,12 @@ function ViewEngagement() {
           <div className="typing-animation">
             <span className="greeting-text">Hello Admin</span>
           </div>
-          <p className="greeting-subtext">Welcome to the AirSphere dashboard</p>
+          <p className="greeting-subtext">Welcome to the AirVana dashboard</p>
         </div>
 
         {/* Date Picker Section */}
         <div className="date-picker-container">
-          <h1 className="dashboard-title">AirSphere Admin Dashboard</h1>
+          <h1 className="dashboard-title">AirVana Admin Dashboard</h1>
           <div className="date-picker-section">
             <label className="date-picker-label">Select Date: </label>
             <DatePicker

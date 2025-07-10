@@ -113,7 +113,7 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-st.title("🌍 Eco News - AirSphere's Premium News Site")
+st.title("🌍 Eco News - AirVana's Premium News Site")
 st.write("Stay informed on **Air Quality**, **Pollution**, **Climate Change**, and **Environmental** news from across the world at your fingertips!")
 st.sidebar.header("🔎 Filters")
 topics = st.sidebar.multiselect(
@@ -173,5 +173,5 @@ if st.sidebar.button("Get Eco News 🌿"):
 
 st.markdown("""
 ---
-Made with ❤️ by **AirSphere Team** | Empowering Green Initiatives 🌿 | Because, Every Breath Matters.
+Made with ❤️ by **AirVana Team** | Empowering Green Initiatives 🌿 | Because, Every Breath Matters.
 """)
