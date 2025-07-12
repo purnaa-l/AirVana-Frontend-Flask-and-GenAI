@@ -29,9 +29,10 @@ import GenAI from './components/GenAI';
 import AQIMap from './components/pages/AQIMap';
 import HealthImpactPrediction from './MLComponents/HealthImpactPrediction';
 import LoginForm from './components/LoginForm';
-import SignupForm from './components/SignUpForm';
 import NLP from './components/NLP';
 import Notifications from './components/pages/Notifications';
+import SignupForm from './components/SignupForm';
+
 // import Index from './NLP/med-info-sphere/src/pages/Index';
 
 const App = () => {
