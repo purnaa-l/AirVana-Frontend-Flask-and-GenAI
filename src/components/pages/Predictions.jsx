@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Add this import
-import './predictions.css'
+import './Predictions.css'
 function Predictions() {
     const phrases = [
             "Tailored just for you—your personal air quality forecast!",
@@ -41,11 +41,11 @@ function Predictions() {
       <h2 className="hero-heading">Smarter Skies Through ML Intelligence</h2>
       <p className="loading-text-hero">{loadingText}</p>
       <div className="button-group">
-           <Link to="/user-centric-prediction" className="cta-button">User Centric Prediction</Link>
-           <Link to="/regional-trends-risk-forecast" className="cta-button">Regional Trends and Risk Forecast</Link>
-           <Link to="/government-initiatives" className="cta-button">Government Initiatives and Suggestions</Link>
-           <Link to="/health-impact-forecast" className="cta-button">Health Impact and Forecast</Link>
-           <Link to="/data-insights" className="cta-button">Data Insights and Trends</Link>
+           <Link to="/temperature-versus-aqi" className="cta-button">Accurate PM 2.5 Prediction</Link>
+           {/* <Link to="/regional-trends-risk-forecast" className="cta-button">Regional Trends and Risk Forecast</Link> */}
+           {/* <Link to="/government-initiatives" className="cta-button">Government Initiatives and Suggestions</Link> */}
+           {/* <Link to="/health-impact-forecast" className="cta-button">Health Impact and Forecast</Link> */}
+           <Link to="/health-impact-prediction" className="cta-button">Health Impact and Risk Prediction</Link>
       </div>
     </div>
   );
