@@ -171,7 +171,9 @@ const FetchAQI = () => {
         setLoading(true);
         const token = import.meta.env.VITE_API_TOKEN;
         const url = `https://api.waqi.info/feed/${city}/?token=${token}`;
-    
+        console.log('Fetching AQI from URL:', url);
+        console.log('Using city:', city);
+        console.log('API Token:', token);
         try {
             const response = await axios.get(url);
             if (response.data.status === 'ok') {
