@@ -3,11 +3,14 @@
 - Check the backend code here: https://github.com/purnaa-l/AirVana-SpringBoot-Backend
 - Check all the ML Models here: https://github.com/purnaa-l/AirVana-ML-Models
 
+
 # 🌬️ AirVana: AI-Powered Air Quality Intelligence and Awareness Platform
 
 ## Overview
 
 **AirVana** is an AI-driven platform designed to provide real-time air quality monitoring, health risk assessments, and interactive environmental awareness tools. Integrating data science, machine learning, geospatial mapping, and generative AI, AirVana empowers users to understand and respond to air pollution threats in a personalized and actionable way.
+
+All work included in this repository was created by purnaa-l. Unauthorized claims of authorship are strictly prohibited.
 
 ---
 
